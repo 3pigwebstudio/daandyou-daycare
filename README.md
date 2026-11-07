@@ -50,6 +50,7 @@ npm run preview
 ## 문서
 
 - [설계 기준 v1.6](docs/design-spec-v1.6.md)
+- [95점 완성도 목표 설계 v1.8](docs/design-spec-v1.8.md)
 - [v1.6 정렬 점검 이미지](docs/alignment-audit-v1.6.png)
 - [남은 작업](docs/next-steps.md)
 
