@@ -1,6 +1,7 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "daandyou-daycare",
+  "account_id": "33bbead179352dbf25a04dfdd153fce5",
   "compatibility_date": "2026-11-07",
   "assets": {
     "directory": "./dist"
