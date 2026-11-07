@@ -1,12 +1,22 @@
 ---
 import '../styles/global.css';
-import { center } from '../data/site';
+import { center, media } from '../data/site';
 
 interface Props {
   title?: string;
 }
 
 const { title = `${center.name} | 재활 전문성을 일상의 돌봄으로` } = Astro.props;
+const canonicalUrl = new URL(Astro.url.pathname, center.publicUrl).toString();
+const socialImageUrl = new URL(media.hero.src, center.publicUrl).toString();
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: center.name,
+  url: center.publicUrl,
+  logo: center.logoUrl,
+  description: center.description,
+};
 ---
 
 <!doctype html>
@@ -15,9 +25,23 @@ const { title = `${center.name} | 재활 전문성을 일상의 돌봄으로` } 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="description" content={center.description} />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="theme-color" content="#206e88" />
     <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:site_name" content={center.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={center.description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={socialImageUrl} />
+    <meta property="og:image:alt" content={media.hero.alt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={center.description} />
+    <meta name="twitter:image" content={socialImageUrl} />
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%23206e88%22/><path d=%22M18 18h13c11 0 17 5 17 14s-6 14-17 14H18V18Zm11 8v12h3c5 0 8-2 8-6s-3-6-8-6h-3Z%22 fill=%22white%22/></svg>" />
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
     <title>{title}</title>
   </head>
   <body>

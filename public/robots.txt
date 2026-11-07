@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://daandyou-daycare.3pig-webstudio.workers.dev/sitemap.xml

@@ -14,7 +14,7 @@
     window.addEventListener('scroll', updateHeader, { passive: true });
 
     if ('IntersectionObserver' in window && Element.prototype.animate && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      const targets = document.querySelectorAll('.intro-grid,.team-grid,.section-head,.day-head,.guide-intro,.program-card,.day-item,.contact-inner');
+      const targets = document.querySelectorAll('.intro-grid,.team-grid,.section-head,.day-head,.guide-intro,.program-bento-lead,.program-bento-card,.day-item,.contact-inner');
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;

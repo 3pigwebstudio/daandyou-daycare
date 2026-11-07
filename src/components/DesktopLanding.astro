@@ -1,6 +1,6 @@
 ---
 import PhoneLink from './PhoneLink.astro';
-import { center, contact, dailyMoments, team } from '../data/site';
+import { center, contact, dailyMoments, faqs, media, mediaStatusLabel, programs, team } from '../data/site';
 
 const directionsUrl = center.address
   ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(center.address)}`
@@ -11,20 +11,20 @@ const mapEmbedUrl = center.address
 ---
 
 <section aria-labelledby="hero-title" class="hero">
-  <div aria-hidden="true" class="hero-bg"></div><div aria-hidden="true" class="hero-overlay"></div>
+  <div aria-hidden="true" class="hero-bg" style={`background-image:url("${media.hero.src}")`}></div><div aria-hidden="true" class="hero-overlay"></div>
   <div class="container">
     <div class="hero-inner">
       <div class="hero-chip">DA&amp;YOU · REHABILITATION DAY CARE</div>
       <h1 id="hero-title">편안한 하루에,<br /><em>재활의 전문성</em>을<br />더하다.</h1>
       <p class="hero-desc">식사하는 순간부터 걷고 움직이는 하루까지.<br />다앤유의 전문성이 어르신의 일상과 함께합니다.</p>
       <div class="hero-actions">
-        <PhoneLink class="btn btn-primary" label="전화로 상담하기" withIcon><span aria-hidden="true">↗</span></PhoneLink>
-        <a class="hero-secondary-link" href="#care">특화 프로그램 살펴보기</a>
+        <PhoneLink class="btn btn-primary" label="이용 상담하기" withIcon><span aria-hidden="true">↗</span></PhoneLink>
+        <a class="hero-secondary-link" href="#care">전문 프로그램 보기</a>
       </div>
       {contact.isProvisional && <p class="hero-note provisional-contact">* 시안에서는 기존 다앤유 방문재활 대표번호로 연결됩니다. 센터 전용번호 확정 시 교체합니다.</p>}
     </div>
   </div>
-  <span class="hero-stamp">콘셉트 이미지 · 실제 센터 사진 아님</span>
+  <span class="hero-stamp">{mediaStatusLabel[media.hero.status]}</span>
 </section>
 
 <div aria-label="다앤유의 주요 강점" class="trust">
@@ -44,12 +44,25 @@ const mapEmbedUrl = center.address
 
 <section class="section program-section" id="care">
   <div class="container">
-    <div class="section-head"><div class="eyebrow">SPECIALIZED CARE</div><h2 class="section-title">다앤유가 특히 중요하게<br />생각하는 두 가지</h2><p class="section-copy">어르신의 하루에서 자주 마주하는 두 순간, <strong>식사</strong>와 <strong>움직임</strong>. 필요한 전문성을 생활 속에 연결합니다.</p></div>
-    <div class="program-grid">
-      <article class="program-card"><span aria-hidden="true" class="program-art"></span><div><span class="program-no">01 · EATING &amp; SWALLOWING</span><h3 class="program-title">한 끼 식사도<br />더 편안하고 안전하게.</h3><p>식사 자세, 음식 섭취, 삼킴과 관련된 일상의 어려움을 세심하게 살피는 식이·연하 지원 프로그램.</p></div><span class="program-tag">식이·연하재활 전문성</span></article>
-      <article class="program-card"><span aria-hidden="true" class="program-art"></span><div><span class="program-no">02 · MOVEMENT &amp; BALANCE</span><h3 class="program-title">움직이는 일상에<br />조금 더 자신감을.</h3><p>파킨슨병의 움직임 특성을 고려한 LSVT BIG 기반의 큰 동작·이동·균형 활동으로 안전한 움직임을 지원합니다.</p></div><span class="program-tag">LSVT BIG 기반 움직임 지원</span></article>
+    <div class="section-head"><div class="eyebrow">SPECIALIZED CARE</div><h2 class="section-title">재활의 관점으로 살펴보는<br />다앤유의 하루</h2><p class="section-copy">식사와 움직임에서 인지·일상 활동까지. 각각의 활동을 따로 떼어 보기보다 어르신의 하루 안에서 연결합니다.</p></div>
+    <div class="program-bento">
+      <article class="program-bento-lead">
+        <span class="program-no">DA&amp;YOU · CARE PRINCIPLE</span>
+        <h3>특별한 한 시간이 아니라,<br />하루 전체를 바라봅니다.</h3>
+        <p>프로그램의 실제 제공 범위와 개인별 이용 적합성은 상담 과정에서 안내합니다.</p>
+        <a class="inline-link" href="#guide">이용 안내 확인하기 <span aria-hidden="true">↗</span></a>
+      </article>
+      {programs.map((program, index) => (
+        <article aria-label={`${program.title} 프로그램`} class={`program-bento-card program-bento-card-${index + 1}`}>
+          {program.image ? (
+            <figure class="program-bento-media"><img alt={program.image.alt} loading="lazy" src={program.image.src} /><figcaption>{mediaStatusLabel[program.image.status]}</figcaption></figure>
+          ) : (
+            <div aria-hidden="true" class="program-bento-pattern"><i></i><i></i><i></i></div>
+          )}
+          <div class="program-bento-copy"><span class="program-no">{program.index} · {program.overline}</span><h3>{program.title}</h3><p>{program.description}</p><span class="program-tag">{program.topic}</span></div>
+        </article>
+      ))}
     </div>
-    <div class="inline-action"><p class="program-small">* 프로그램 제공 범위와 개인별 이용 적합성은 상담 과정에서 안내합니다.</p><a class="inline-link" href="#guide">이용 안내 살펴보기 <span aria-hidden="true">↗</span></a></div>
   </div>
 </section>
 
@@ -75,14 +88,12 @@ const mapEmbedUrl = center.address
         <div class="map-bottom"><span>{center.address || '강서 센터 주소 확인 중'}</span>{directionsUrl && <a class="directions-link" href={directionsUrl} rel="noopener noreferrer" target="_blank">길찾기 열기 <span aria-hidden="true">↗</span></a>}</div>
       </div>
       <div aria-label="이용 준비 상세 안내" class="practical-disclosure">
-        <div class="disclosure-lead">필요할 때만 자세히 확인하세요</div>
-        <details class="disclosure-item"><summary>이용 대상과 상담 절차 <span aria-hidden="true" class="disclosure-chevron">⌄</span></summary><div class="disclosure-body">이용 가능 여부와 필요한 준비 사항은 어르신의 상황과 센터 운영 기준을 확인한 뒤 상담 과정에서 안내합니다.</div></details>
-        <details class="disclosure-item"><summary>전문 프로그램 참여 안내 <span aria-hidden="true" class="disclosure-chevron">⌄</span></summary><div class="disclosure-body">식이·연하 지원과 LSVT BIG 기반 움직임 프로그램은 개인의 상태 및 실제 제공 범위에 따라 상담 시 안내합니다.</div></details>
-        <details class="disclosure-item"><summary>송영 및 이용 시간 안내 <span aria-hidden="true" class="disclosure-chevron">⌄</span></summary><div class="disclosure-body">송영 가능 지역과 운영시간은 센터의 운영정보가 확정되면 이 페이지에 표시합니다. 필요한 경우 먼저 전화로 문의해 주세요.</div></details>
+        <div class="disclosure-lead">이용 전 자주 묻는 질문</div>
+        {faqs.map((faq) => <details class="disclosure-item"><summary>{faq.question}<span aria-hidden="true" class="disclosure-chevron">⌄</span></summary><div class="disclosure-body">{faq.answer}</div></details>)}
       </div>
-      <div class="guide-footer"><PhoneLink class="btn btn-primary" label="이용 상담 연결"><span aria-hidden="true">↗</span></PhoneLink>{contact.isProvisional && <small class="provisional-contact">※ 시안용: 기존 다앤유 방문재활 대표번호로 연결됩니다. 강서 센터 번호 확정 후 교체.</small>}</div>
+      <div class="guide-footer"><PhoneLink class="btn btn-primary" label="이용 상담하기"><span aria-hidden="true">↗</span></PhoneLink>{contact.isProvisional && <small class="provisional-contact">※ 현재 기존 다앤유 방문재활 대표번호로 연결됩니다. 강서 센터 번호 확정 후 교체합니다.</small>}</div>
     </div>
   </div>
 </section>
 
-<section class="contact-section" id="contact"><div class="container contact-inner"><div><div class="eyebrow">LET'S TALK</div><h2 class="contact-title">우리 부모님께 맞는 하루인지,<br />먼저 이야기해 보세요.</h2><p class="contact-copy">이용 가능 여부와 프로그램이 궁금하다면 편하게 문의해 주세요.</p></div><div class="contact-actions"><PhoneLink class="btn btn-light" label="전화로 상담하기" withIcon><span aria-hidden="true">↗</span></PhoneLink>{contact.isProvisional && <small class="provisional-contact">시안용 연결: 기존 다앤유 방문재활 대표번호 {contact.displayPhone}</small>}</div></div></section>
+<section class="contact-section" id="contact"><div class="container contact-inner"><div><div class="eyebrow">LET'S TALK</div><h2 class="contact-title">우리 부모님께 맞는 하루인지,<br />먼저 이야기해 보세요.</h2><p class="contact-copy">이용 가능 여부와 프로그램이 궁금하다면 편하게 문의해 주세요.</p></div><div class="contact-actions"><PhoneLink class="btn btn-light" label="이용 상담하기" withIcon><span aria-hidden="true">↗</span></PhoneLink>{contact.isProvisional && <small class="provisional-contact">현재 연결: 기존 다앤유 방문재활 대표번호 {contact.displayPhone}</small>}</div></div></section>

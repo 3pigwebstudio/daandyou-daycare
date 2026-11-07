@@ -1,6 +1,6 @@
 ---
 import PhoneLink from './PhoneLink.astro';
-import { center, contact, programs } from '../data/site';
+import { center, contact, dailyMoments, faqs, media, mediaStatusLabel, programs, team, trustFacts } from '../data/site';
 ---
 
 <div class="xi-mobile-app" id="xi-mobile-app">
@@ -21,12 +21,15 @@ import { center, contact, programs } from '../data/site';
   <section aria-labelledby="xi-about-title" class="xi-view xi-detail" data-view="about" hidden>
     <button aria-label="메인 메뉴로 돌아가기" class="xi-back" data-xi-target="home" type="button">〈 <span>메인으로</span></button>
     <div class="xi-detail-head"><p class="xi-overline">ABOUT · DA&amp;YOU</p><h2 id="xi-about-title">돌봄의 하루에<br /><em>재활의 관점</em>을 더합니다.</h2><p>장기요양 현장의 경험과 작업치료 전문성을 결합한, 사람 중심의 데이케어를 지향합니다.</p></div>
-    <figure class="xi-photo"><img alt="어르신들이 편안한 공용 공간에서 함께 이야기하는 콘셉트 이미지" src="/images/daycare_life.webp" /><figcaption>콘셉트 이미지 · 실제 센터 사진 아님</figcaption></figure>
+    <figure class="xi-photo"><img alt={media.daycareLife.alt} src={media.daycareLife.src} /><figcaption>{mediaStatusLabel[media.daycareLife.status]}</figcaption></figure>
     <div class="xi-facts">
-      <article><b>01</b><span><strong>장기요양 경험</strong><small>현장을 이해하는 운영</small></span></article>
-      <article><b>02</b><span><strong>재활 전문인력</strong><small>일상 속 기능과 참여를 고려</small></span></article>
-      <article><b>03</b><span><strong>전문자문 네트워크</strong><small>교육·학술·임상 경험 연결</small></span></article>
+      {trustFacts.map((fact) => <article><b>{fact.index}</b><span><strong>{fact.title}</strong><small>{fact.description}</small></span></article>)}
     </div>
+    <section aria-labelledby="xi-expertise-title" class="xi-expertise">
+      <p class="xi-overline">EXPERTISE &amp; EXPERIENCE</p>
+      <h3 id="xi-expertise-title">사람의 전문성을 연결합니다.</h3>
+      <div class="xi-expertise-list">{team.map((member) => <p><strong>{member.role}</strong><span>{member.expertise}</span></p>)}</div>
+    </section>
     <a class="xi-inline-cta" data-xi-target="programs" href="#mobile-programs">전문 프로그램 살펴보기 <span>→</span></a>
   </section>
 
@@ -38,7 +41,7 @@ import { center, contact, programs } from '../data/site';
         {programs.map((program, index) => (
           <article aria-label={`${index + 1}번째 프로그램: ${program.title}`} class="xi-program-card">
             {program.image ? (
-              <div class="xi-program-photo"><img alt={program.imageAlt} src={program.image} /><span class="xi-photo-note">콘셉트 이미지</span></div>
+              <div class="xi-program-photo"><img alt={program.image.alt} src={program.image.src} /><span class="xi-photo-note">{mediaStatusLabel[program.image.status]}</span></div>
             ) : (
               <div class="xi-program-photo xi-pattern"><div aria-hidden="true" class="xi-shape-grid"><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="xi-photo-note">활동 영역 개념 이미지</span></div>
             )}
@@ -52,17 +55,24 @@ import { center, contact, programs } from '../data/site';
       <div aria-label="프로그램 순서" class="xi-dots">
         {programs.map((program, index) => <button aria-current={index === 0 ? 'true' : undefined} aria-label={`${program.title} 보기`} class={index === 0 ? 'is-active' : ''} data-card-index={index}></button>)}
       </div>
-      <div class="xi-slider-arrows"><button aria-label="이전 프로그램" id="xi-prev" title="이전 프로그램" type="button">←</button><button aria-label="다음 프로그램" id="xi-next" title="다음 프로그램" type="button">→</button></div>
+      <div class="xi-slider-arrows"><button id="xi-prev" type="button"><span aria-hidden="true">←</span> 이전</button><button id="xi-next" type="button">다음 <span aria-hidden="true">→</span></button></div>
     </div>
     <p class="xi-program-note">개별 프로그램 내용과 이용 적합성은 상담 과정에서 안내합니다.</p>
+    <section aria-labelledby="xi-day-title" class="xi-mobile-day">
+      <p class="xi-overline">A DAY WITH DA&amp;YOU</p>
+      <h3 id="xi-day-title">작은 순간이 좋은 하루를 만듭니다.</h3>
+      <div>{dailyMoments.map((moment) => <article><small>{moment.index} / {moment.label}</small><strong>{moment.title.replace('\n', ' ')}</strong><p>{moment.description}</p></article>)}</div>
+    </section>
   </section>
 
   <section aria-labelledby="xi-visit-title" class="xi-view xi-detail" data-view="visit" hidden>
     <button aria-label="메인 메뉴로 돌아가기" class="xi-back" data-xi-target="home" type="button">〈 <span>메인으로</span></button>
     <div class="xi-detail-head"><p class="xi-overline">VISIT &amp; CONTACT</p><h2 id="xi-visit-title">이용을 위한<br /><em>첫 걸음.</em></h2><p>상담과 방문에 필요한 정보를 확인하고 문의할 수 있습니다.</p></div>
-    <div class="xi-visit-block"><span>이용 문의</span><strong>{contact.displayPhone}</strong><p>{center.hours || '센터 전용 운영시간은 확정 후 이 화면에 반영됩니다.'}</p><PhoneLink class="xi-inline-cta" label="전화 상담 연결"><span>→</span></PhoneLink></div>
-    <details class="xi-faq"><summary>이용 대상은 어떻게 확인하나요?<span>＋</span></summary><p>장기요양등급과 이용 상황 등에 따라 안내가 달라질 수 있어 상담 과정에서 확인합니다.</p></details>
-    <details class="xi-faq"><summary>어떤 활동을 이용할 수 있나요?<span>＋</span></summary><p>식이·연하 지원, LSVT BIG 기반 움직임, 인지·일상 활동 등의 구성을 살펴본 뒤 개별 적합성을 상담할 수 있습니다.</p></details>
+    <div class="xi-visit-block"><span>이용 문의</span><strong>{contact.displayPhone}</strong><p>{center.hours || '센터 전용 운영시간은 확정 후 이 화면에 반영됩니다.'}</p><PhoneLink class="xi-inline-cta" label="이용 상담하기"><span>→</span></PhoneLink></div>
+    <section aria-labelledby="xi-faq-title" class="xi-faq-group">
+      <h3 id="xi-faq-title">이용 전 자주 묻는 질문</h3>
+      {faqs.map((faq) => <details class="xi-faq"><summary>{faq.question}<span aria-hidden="true">＋</span></summary><p>{faq.answer}</p></details>)}
+    </section>
     <div class="xi-map-placeholder"><span aria-hidden="true">⌖</span><strong>센터 위치 안내</strong><p>{center.address || '강서 센터 주소 확인 후 지도와 길찾기 기능을 연결합니다.'}</p></div>
     {contact.isProvisional && <p class="xi-visit-note">현재 시안의 전화 연결은 기존 다앤유 방문재활 대표번호를 사용합니다. 강서 센터 번호 확정 후 교체가 필요합니다.</p>}
   </section>
