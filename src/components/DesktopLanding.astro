@@ -26,17 +26,27 @@ const mapEmbedUrl = center.address
       {contact.isProvisional && <small class="hero-note provisional-contact">현재 기존 다앤유 방문재활 대표번호로 연결됩니다.</small>}
     </article>
 
-    <figure class="hero-board-visual hero-board-visual-care">
-      <img alt={media.hero.alt} fetchpriority="high" src={media.hero.src} />
-      <figcaption>{mediaStatusLabel[media.hero.status]}</figcaption>
-      <div class="hero-board-visual-copy"><small>EVERYDAY CARE</small><strong>편안한 하루,<br />함께하는 돌봄</strong></div>
-    </figure>
+    <div class="hero-board-gallery">
+      <svg aria-hidden="true" class="hero-board-clips" focusable="false">
+        <defs>
+          <clipPath id="care-frame-clip" clipPathUnits="objectBoundingBox">
+            <path d="M .055 0 H .62 C .655 0 .68 .025 .68 .06 V .09 H .945 C .975 .09 1 .115 1 .145 V .945 C 1 .975 .975 1 .945 1 H .055 C .025 1 0 .975 0 .945 V .055 C 0 .025 .025 0 .055 0 Z" />
+          </clipPath>
+        </defs>
+      </svg>
 
-    <figure class="hero-board-visual hero-board-visual-rehab">
-      <img alt={media.movement.alt} src={media.movement.src} />
-      <figcaption>{mediaStatusLabel[media.movement.status]}</figcaption>
-      <div class="hero-board-visual-copy"><small>REHABILITATION</small><strong>움직임을 일상과<br />연결합니다.</strong></div>
-    </figure>
+      <figure class="hero-board-visual hero-board-visual-care">
+        <img alt={media.hero.alt} fetchpriority="high" src={media.hero.src} />
+        <figcaption>{mediaStatusLabel[media.hero.status]}</figcaption>
+        <div class="hero-board-visual-copy"><small>EVERYDAY CARE</small><strong>편안한 하루,<br />함께하는 돌봄</strong></div>
+      </figure>
+
+      <figure class="hero-board-visual hero-board-visual-rehab">
+        <img alt={media.movement.alt} src={media.movement.src} />
+        <figcaption>{mediaStatusLabel[media.movement.status]}</figcaption>
+        <div class="hero-board-visual-copy"><small>REHABILITATION</small><strong>움직임을 일상과<br />연결합니다.</strong></div>
+      </figure>
+    </div>
 
     <nav aria-label="빠른 메뉴" class="hero-board-menu">
       <div class="hero-board-menu-head"><small>QUICK MENU</small><strong>원하는 정보를<br />바로 선택하세요.</strong></div>
