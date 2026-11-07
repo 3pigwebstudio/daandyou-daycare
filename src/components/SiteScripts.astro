@@ -1,0 +1,93 @@
+<script is:inline>
+  (() => {
+    const logo = document.getElementById('official-logo');
+    const fallback = document.getElementById('logo-fallback');
+    if (logo instanceof HTMLImageElement && fallback instanceof HTMLElement) {
+      const showFallback = () => { logo.hidden = true; fallback.hidden = false; };
+      logo.addEventListener('error', showFallback, { once: true });
+      if (logo.complete && logo.naturalWidth === 0) showFallback();
+    }
+
+    const header = document.querySelector('.site-header');
+    const updateHeader = () => header?.classList.toggle('is-scrolled', window.scrollY > 14);
+    updateHeader();
+    window.addEventListener('scroll', updateHeader, { passive: true });
+
+    if ('IntersectionObserver' in window && Element.prototype.animate && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const targets = document.querySelectorAll('.intro-grid,.team-grid,.section-head,.day-head,.guide-intro,.program-card,.day-item,.contact-inner');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          observer.unobserve(entry.target);
+          entry.target.animate([{ opacity: 0.86, transform: 'translateY(10px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 420, easing: 'cubic-bezier(.2,.7,.2,1)' });
+        });
+      }, { threshold: 0.14, rootMargin: '0px 0px -30px 0px' });
+      targets.forEach((target) => observer.observe(target));
+    }
+
+    const app = document.getElementById('xi-mobile-app');
+    if (!app) return;
+    const views = Array.from(app.querySelectorAll('[data-view]'));
+    const validViews = ['home', 'about', 'programs', 'visit'];
+    const setView = (requestedView, updateHistory = true) => {
+      const view = validViews.includes(requestedView) ? requestedView : 'home';
+      views.forEach((item) => { item.hidden = item.dataset.view !== view; });
+      app.dataset.current = view;
+      if (updateHistory) history.pushState({ xi: view }, '', view === 'home' ? '#mobile-home' : `#mobile-${view}`);
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    };
+    app.querySelectorAll('[data-xi-target]').forEach((control) => control.addEventListener('click', (event) => {
+      event.preventDefault();
+      setView(control.dataset.xiTarget || 'home');
+    }));
+    document.querySelector('.site-header .brand')?.addEventListener('click', (event) => {
+      if (window.matchMedia('(max-width: 850px)').matches) { event.preventDefault(); setView('home'); }
+    });
+    const viewFromHash = () => location.hash.startsWith('#mobile-') ? location.hash.replace('#mobile-', '') : 'home';
+    window.addEventListener('popstate', () => setView(viewFromHash(), false));
+    setView(viewFromHash(), false);
+
+    const track = document.getElementById('xi-card-track');
+    if (!track) return;
+    const cards = Array.from(track.children);
+    const current = document.getElementById('xi-card-current');
+    const dots = Array.from(app.querySelectorAll('.xi-dots button'));
+    const previous = document.getElementById('xi-prev');
+    const next = document.getElementById('xi-next');
+    let active = 0;
+    const render = (requestedIndex) => {
+      active = Math.max(0, Math.min(cards.length - 1, requestedIndex));
+      if (current) current.textContent = String(active + 1).padStart(2, '0');
+      dots.forEach((dot, index) => { dot.classList.toggle('is-active', index === active); index === active ? dot.setAttribute('aria-current', 'true') : dot.removeAttribute('aria-current'); });
+      if (previous) previous.disabled = active === 0;
+      if (next) next.disabled = active === cards.length - 1;
+    };
+    const scrollCard = (requestedIndex) => {
+      const index = Math.max(0, Math.min(cards.length - 1, requestedIndex));
+      const firstCard = cards[0];
+      const card = cards[index];
+      if (!firstCard || !card) return;
+      track.scrollTo({ left: card.offsetLeft - firstCard.offsetLeft, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+      render(index);
+    };
+    dots.forEach((dot, index) => dot.addEventListener('click', () => scrollCard(index)));
+    previous?.addEventListener('click', () => scrollCard(active - 1));
+    next?.addEventListener('click', () => scrollCard(active + 1));
+    let ticking = false;
+    track.addEventListener('scroll', () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const firstCard = cards[0];
+        if (!firstCard) return;
+        let nearest = 0;
+        let distance = Infinity;
+        cards.forEach((card, index) => { const nextDistance = Math.abs((card.offsetLeft - firstCard.offsetLeft) - track.scrollLeft); if (nextDistance < distance) { distance = nextDistance; nearest = index; } });
+        render(nearest);
+        ticking = false;
+      });
+    }, { passive: true });
+    track.addEventListener('keydown', (event) => { if (event.key === 'ArrowRight') { event.preventDefault(); scrollCard(active + 1); } if (event.key === 'ArrowLeft') { event.preventDefault(); scrollCard(active - 1); } });
+    render(0);
+  })();
+</script>

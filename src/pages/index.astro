@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DesktopLanding from '../components/DesktopLanding.astro';
+import MobileApp from '../components/MobileApp.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteScripts from '../components/SiteScripts.astro';
+---
+
+<BaseLayout>
+  <SiteHeader />
+  <main id="main-content">
+    <MobileApp />
+    <DesktopLanding />
+  </main>
+  <SiteFooter />
+  <SiteScripts />
+</BaseLayout>

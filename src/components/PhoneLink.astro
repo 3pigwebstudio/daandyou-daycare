@@ -1,0 +1,26 @@
+---
+import PhoneIcon from './PhoneIcon.astro';
+import { center, contact } from '../data/site';
+
+interface Props {
+  class?: string;
+  label: string;
+  withIcon?: boolean;
+}
+
+const { class: className = '', label, withIcon = false } = Astro.props;
+const ariaLabel = contact.isProvisional
+  ? `기존 다앤유 대표번호 ${contact.displayPhone}으로 전화 연결`
+  : `${center.name} ${contact.displayPhone} 전화 상담`;
+---
+
+<a
+  class={className}
+  href={`tel:${contact.dialPhone}`}
+  aria-label={ariaLabel}
+  title={contact.isProvisional ? '시안: 기존 다앤유 방문재활 대표번호 (강서센터 전용번호 미확정)' : ariaLabel}
+>
+  {withIcon && <PhoneIcon />}
+  {label}
+  <slot />
+</a>

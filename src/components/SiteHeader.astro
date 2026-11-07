@@ -1,0 +1,23 @@
+---
+import PhoneLink from './PhoneLink.astro';
+import { center } from '../data/site';
+---
+
+<header class="site-header" id="top">
+  <div class="container header-inner">
+    <a aria-label={`${center.name} 상단으로`} class="brand" href="#top">
+      <span class="master-logo">
+        <img alt="다앤유 공식 마스터 로고" decoding="async" fetchpriority="high" id="official-logo" src={center.logoUrl} />
+        <span class="logo-fallback" hidden id="logo-fallback"><strong>다앤유</strong><i>Doing Activities &amp; you</i></span>
+      </span>
+      <span aria-hidden="true" class="divider-v"></span>
+      <span class="brand-title"><strong>{center.shortName}</strong><span>재활 데이케어센터</span></span>
+    </a>
+    <nav aria-label="주요 메뉴" class="nav">
+      <a href="#why">다앤유 소개</a>
+      <a href="#care">특화 프로그램</a>
+      <a href="#guide">이용 안내</a>
+      <PhoneLink class="btn btn-primary" label="대표번호 문의" withIcon />
+    </nav>
+  </div>
+</header>
