@@ -30,11 +30,18 @@ const mapEmbedUrl = center.address
       {contact.isProvisional && <small class="hero-note provisional-contact">현재 기존 다앤유 방문재활 대표번호로 연결됩니다.</small>}
     </article>
 
-    <figure class="hero-board-visual">
+    <figure class="hero-board-visual hero-board-visual-care">
       <img alt={media.hero.alt} fetchpriority="high" src={media.hero.src} />
       <figcaption>{mediaStatusLabel[media.hero.status]}</figcaption>
-      <div class="hero-board-visual-copy"><small>DA&amp;YOU DIFFERENCE</small><strong>재활이 특별한 시간이 아니라,<br />하루의 방식이 되도록.</strong></div>
-      <div aria-label="주요 프로그램" class="hero-board-programs"><span>식이·연하 지원</span><span>LSVT BIG 기반 움직임</span></div>
+      <div class="hero-board-photo-tag">식사 · 관계 · 일상</div>
+      <div class="hero-board-visual-copy"><small>EVERYDAY CARE</small><strong>편안한 하루,<br />함께하는 돌봄</strong></div>
+    </figure>
+
+    <figure class="hero-board-visual hero-board-visual-rehab">
+      <img alt={media.movement.alt} src={media.movement.src} />
+      <figcaption>{mediaStatusLabel[media.movement.status]}</figcaption>
+      <div class="hero-board-photo-tag">재활 활동 · 움직임</div>
+      <div class="hero-board-visual-copy"><small>REHABILITATION</small><strong>움직임을 일상과<br />연결합니다.</strong></div>
     </figure>
 
     <nav aria-label="빠른 메뉴" class="hero-board-menu">

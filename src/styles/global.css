@@ -358,3 +358,111 @@
  .site-header .master-logo img{max-width:92px}
  .site-header .brand-title strong{font-size:12.5px}
 }
+
+/* v2.1 — Wide four-column desktop hero with two independent photo cards. */
+@media(min-width:1280px){
+ .site-header .header-inner{max-width:1780px}
+ .hero-board{height:calc(100svh - 88px);min-height:800px;max-height:980px}
+ .hero-board-grid{width:100%;height:100%;max-width:1780px;grid-template-columns:minmax(250px,.82fr) minmax(0,1.08fr) minmax(0,1.08fr) minmax(280px,.92fr);grid-template-rows:auto minmax(0,1fr);gap:20px;padding:28px 48px 32px}
+ .hero-board-title{grid-column:1/3;padding:0 4px 7px}
+ .hero-board-title h1{font-size:clamp(58px,4.05vw,80px);max-width:830px}
+ .hero-board-facts{grid-column:3;padding-bottom:11px}
+ .hero-board-story{grid-column:1;grid-row:2}
+ .hero-board-visual-care{grid-column:2;grid-row:2}
+ .hero-board-visual-rehab{grid-column:3;grid-row:2}
+ .hero-board-menu{grid-column:4;grid-row:1/3}
+}
+.hero-board-story{border:0;box-shadow:none;border-radius:0;background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;padding:34px 14px 6px 4px}
+.hero-board-story h2{font-size:clamp(32px,2.25vw,44px);line-height:1.2;margin:25px 0 18px}
+.hero-board-story p{font-size:17px;line-height:1.85;max-width:330px;margin-bottom:24px}
+.hero-board-story .btn{width:auto;min-width:176px;margin-top:28px;padding-inline:18px}
+.hero-board-story .hero-note{max-width:260px;font-size:10px}
+.hero-board-visual{grid-column:auto;grid-row:auto;border:1px solid rgba(255,255,255,.82);border-radius:30px;box-shadow:0 18px 42px rgba(28,61,77,.1)}
+.hero-board-visual img{height:100%;min-height:0;object-fit:cover;transition:transform .55s cubic-bezier(.2,.75,.2,1)}
+.hero-board-visual-care img{object-position:58% center}
+.hero-board-visual-rehab img{object-position:56% center;filter:saturate(.94) contrast(1.03)}
+.hero-board-visual-rehab::after{background:linear-gradient(180deg,rgba(7,31,45,.08) 30%,rgba(8,35,50,.82) 100%)}
+.hero-board-photo-tag{position:absolute;z-index:3;top:17px;left:17px;min-height:36px;display:inline-flex;align-items:center;padding:0 13px;border:1px solid rgba(255,255,255,.6);border-radius:999px;background:rgba(255,255,255,.76);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#214b5c;font-size:11px;font-weight:780}
+.hero-board-visual-copy{left:27px;right:24px;bottom:28px}
+.hero-board-visual-copy small{font-size:10px}
+.hero-board-visual-copy strong{font-size:clamp(29px,2.15vw,42px);line-height:1.24}
+.hero-board-visual figcaption{font-size:9px;bottom:12px;right:13px;max-width:175px;text-align:right}
+.hero-board-menu{border:0;box-shadow:none;border-radius:0;background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;padding:0;gap:12px}
+.hero-board-menu-head{padding:12px 10px 10px}
+.hero-board-menu-head strong{font-size:23px}
+.hero-menu-card{min-height:0;padding:22px 20px;border-radius:26px;box-shadow:0 14px 34px rgba(25,59,79,.08)}
+.hero-menu-card strong{font-size:clamp(24px,1.55vw,31px)}
+.hero-menu-card span{font-size:12px}
+@media(max-width:1599px) and (min-width:1280px){
+ .hero-board{height:auto;min-height:790px;max-height:none}
+ .hero-board-grid{grid-template-columns:minmax(215px,.78fr) repeat(2,minmax(0,1.06fr)) minmax(235px,.88fr);grid-template-rows:auto minmax(600px,1fr);gap:15px;padding:26px 32px 30px}
+ .hero-board-title h1{font-size:clamp(52px,4.3vw,67px)}
+ .hero-board-story h2{font-size:clamp(29px,2.4vw,38px)}
+ .hero-board-story p{font-size:15px}
+ .hero-board-visual-copy strong{font-size:clamp(27px,2.25vw,35px)}
+ .hero-menu-card{padding:19px 17px}
+ .hero-menu-card strong{font-size:clamp(22px,1.8vw,28px)}
+}
+@media(max-width:1279px) and (min-width:1024px){
+ .hero-board{height:auto;max-height:none;min-height:0}
+ .hero-board-grid{grid-template-columns:minmax(230px,.8fr) repeat(2,minmax(0,1fr));grid-template-rows:auto minmax(530px,1fr) auto;gap:15px;padding:28px 28px 32px;max-width:1180px}
+ .hero-board-title{grid-column:1/3;grid-row:1}
+ .hero-board-title h1{font-size:clamp(50px,5.3vw,66px)}
+ .hero-board-facts{grid-column:3;grid-row:1}
+ .hero-board-story{grid-column:1;grid-row:2}
+ .hero-board-visual-care{grid-column:2;grid-row:2}
+ .hero-board-visual-rehab{grid-column:3;grid-row:2}
+ .hero-board-menu{grid-column:1/4;grid-row:3;grid-template-columns:repeat(3,1fr);grid-template-rows:auto;gap:12px}
+ .hero-board-menu-head{grid-column:1/-1;display:flex;align-items:end;justify-content:space-between;padding:7px 6px}
+ .hero-board-menu-head small{margin:0}.hero-board-menu-head strong{font-size:19px;text-align:right}
+ .hero-menu-card{min-height:150px}
+ .hero-board-story h2{font-size:31px}
+ .hero-board-story p{font-size:15px}
+ .hero-board-visual-copy strong{font-size:30px}
+}
+@media(max-width:1023px) and (min-width:851px){
+ .hero-board{height:auto;max-height:none;min-height:0}
+ .hero-board-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto auto auto minmax(500px,1fr) auto;gap:16px;padding:28px 28px 34px}
+ .hero-board-title{grid-column:1/3;grid-row:1}
+ .hero-board-title h1{font-size:clamp(52px,7vw,68px);max-width:760px}
+ .hero-board-facts{grid-column:1/3;grid-row:2;justify-content:flex-start;padding:0}
+ .hero-board-story{grid-column:1/3;grid-row:3;padding:24px 4px;display:grid;grid-template-columns:1fr 1fr;column-gap:36px}
+ .hero-board-story .hero-board-kicker,.hero-board-story h2{grid-column:1}.hero-board-story p,.hero-board-story .hero-board-keywords{grid-column:2}
+ .hero-board-story .btn,.hero-board-story .hero-note{grid-column:1;align-self:end}
+ .hero-board-visual-care{grid-column:1;grid-row:4}.hero-board-visual-rehab{grid-column:2;grid-row:4}
+ .hero-board-menu{grid-column:1/3;grid-row:5;grid-template-columns:repeat(3,1fr);grid-template-rows:auto;gap:10px}
+ .hero-board-menu-head{grid-column:1/-1;display:flex;align-items:end;justify-content:space-between}
+ .hero-menu-card{min-height:145px}
+}
+
+/* v2.2 — Stable full-width mobile menu inspired by familiar video feeds. */
+@media(max-width:850px){
+ .site-header{background:#fff!important;border-bottom:1px solid #e1e7e9!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;box-shadow:none}
+ .xi-mobile-app{background:#f7f8f9;min-height:calc(100svh - 73px);padding-bottom:128px}
+ .xi-home{max-width:600px;margin:0 auto;padding:12px 12px 24px}
+ .xi-portal{display:grid;gap:12px;margin:0;padding:0;perspective:none}
+ .xi-tile{position:relative;display:flex;aspect-ratio:16/9;min-height:0;margin:0!important;padding:22px 24px;justify-content:flex-end;border:0!important;border-radius:18px!important;overflow:hidden;box-shadow:none;transform:none!important;transform-style:flat;transition:filter .15s ease,background-color .15s ease}
+ .xi-tile:before,.xi-tile:after{display:none!important}
+ .xi-tile-a{background:#3985ab}.xi-tile-b{background:#193249}.xi-tile-c{background:#6cb5d4;color:#092c41!important}
+ .xi-tile-index{position:absolute;top:22px;left:24px;margin:0;font-size:13px;line-height:1.3;letter-spacing:.08em;opacity:.82}
+ .xi-tile-arrow{position:absolute!important;top:13px;right:15px;display:grid!important;width:44px;height:44px;place-items:center;font-size:27px;line-height:1;font-weight:500}
+ .xi-tile strong{font-size:clamp(30px,8vw,36px);line-height:1.18;letter-spacing:-.055em}
+ .xi-tile-copy,.xi-tile>span:last-child{margin-top:8px;font-size:17px;line-height:1.45;font-weight:620;opacity:.9}
+ .xi-tile:active{filter:brightness(.94);transform:none!important}
+ .xi-tile:focus-visible{outline:3px solid #e9aa4a;outline-offset:3px}
+ .xi-footnote{margin:18px 0 0;font-size:13px;line-height:1.55;color:#74858d}
+}
+@media(max-width:600px){
+ .mobile-call{left:0;right:0;bottom:0;padding:9px 12px calc(7px + env(safe-area-inset-bottom));border:0;border-top:1px solid #dce4e7;border-radius:0;background:#fff;box-shadow:0 -8px 24px rgba(35,67,90,.07);backdrop-filter:none;-webkit-backdrop-filter:none}
+ .mobile-call a{min-height:56px;border-radius:14px;box-shadow:none}
+ .mobile-phone-note{padding:0;font-size:12px}
+}
+@media(max-width:380px){
+ .xi-home{padding:10px 10px 22px}
+ .xi-portal{gap:10px}
+ .xi-tile{padding:19px 20px}
+ .xi-tile-index{top:19px;left:20px;font-size:12px}
+ .xi-tile-arrow{top:10px;right:11px}
+ .xi-tile strong{font-size:29px}
+ .xi-tile-copy,.xi-tile>span:last-child{font-size:16px}
+}
