@@ -339,3 +339,22 @@
  .hero-board-menu{grid-column:1/4;grid-row:3;grid-template-columns:repeat(3,1fr);grid-template-rows:auto;gap:10px}
  .hero-board-menu-head{grid-column:1/-1;display:flex;align-items:end;justify-content:space-between;padding:5px 6px 8px}.hero-board-menu-head small{margin:0}.hero-board-menu-head strong{font-size:18px;text-align:right}.hero-menu-card{min-height:145px}
 }
+
+/* v2.3 — Make the exact business identity visible within the shared header. */
+.brand-title strong{font-size:18px;font-weight:800;color:#1d3542;letter-spacing:-.05em}
+.brand-title span{margin-top:1px;font-size:11px;font-weight:700;color:#39768b;letter-spacing:.02em}
+@media(max-width:850px){
+ .site-header .brand{gap:10px}
+ .site-header .brand-title{display:flex!important;min-width:0;white-space:nowrap;line-height:1.25}
+ .site-header .brand-title strong{font-size:clamp(13px,3.45vw,15px);font-weight:800;letter-spacing:-.055em}
+ .site-header .brand-title span{margin-top:2px;font-size:10px;line-height:1.15}
+ .site-header .divider-v{display:none!important}
+ .site-header .master-logo{min-width:0!important;flex:0 0 auto}
+ .site-header .master-logo img{max-width:112px;max-height:43px}
+}
+@media(max-width:360px){
+ .site-header .container{padding-inline:14px}
+ .site-header .brand{gap:8px}
+ .site-header .master-logo img{max-width:92px}
+ .site-header .brand-title strong{font-size:12.5px}
+}
