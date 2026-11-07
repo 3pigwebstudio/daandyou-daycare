@@ -55,7 +55,13 @@ npm run preview
 
 ## 배포
 
-Cloudflare를 기본 배포 플랫폼으로 둡니다. 현재 프로젝트는 정적 출력이므로 빌드 명령 `npm run build`, 출력 디렉터리 `dist`, Node 버전 `22.23.4` 이상으로 연결할 수 있습니다. **Pages/Workers 중 배포 방식과 실제 도메인 연결은 운영정보 확정 후 진행합니다.**
+Cloudflare Workers Static Assets를 기본 배포 방식으로 사용합니다. `wrangler.jsonc`가 빌드 결과물인 `dist/`를 배포하도록 설정되어 있습니다.
+
+```bash
+npm run deploy
+```
+
+Cloudflare 로그인이 끝난 환경에서 위 명령을 실행하면 `npm run build` 후 Workers에 배포됩니다. 실제 운영 도메인 연결은 센터 운영정보와 도메인이 확정된 뒤 진행합니다.
 
 ## 권장 GitHub 설정
 

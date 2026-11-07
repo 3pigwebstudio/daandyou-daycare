@@ -15,5 +15,5 @@
 ## P2 — 품질
 - [ ] 글자 확대 200% 및 키보드 접근성 검증
 - [ ] 50대 이상 실제 보호자 사용성 테스트
-- [ ] 운영 배포 방식 결정 (Cloudflare Pages 또는 Workers)
+- [x] 운영 배포 방식 결정 (Cloudflare Workers Static Assets)
 - [ ] SEO 및 OG 메타데이터 검수
