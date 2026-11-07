@@ -37,9 +37,8 @@ export interface DailyMoment {
 export const center = {
   name: '다앤유 재활 데이케어센터',
   shortName: '다앤유 재활 데이케어센터',
-  locationName: '강서센터',
   description:
-    '재활 전문성을 일상의 돌봄에 더하는 다앤유 재활 데이케어센터 강서센터. 식사·삼킴 지원과 LSVT BIG 기반 움직임·균형 프로그램을 소개합니다.',
+    '재활 전문성을 일상의 돌봄에 더하는 다앤유 재활 데이케어센터. 식사·삼킴 지원과 LSVT BIG 기반 움직임·균형 프로그램을 소개합니다.',
   logoUrl: 'https://cdn.imweb.me/thumbnail/20251118/380d41f33f811.png',
   websiteUrl: 'https://daandyou.com/',
   publicUrl: 'https://daandyou-daycare.3pig-webstudio.workers.dev/',
