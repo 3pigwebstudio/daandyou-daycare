@@ -132,7 +132,7 @@
 
 .xi-mobile-app{display:none}
 @media (max-width: 850px){
- .site-header{height:73px;background:#f7f8f9!important;border-bottom:0!important}
+ .site-header{height:73px;background:rgba(247,248,249,.78)!important;border-bottom:1px solid rgba(255,255,255,.72)!important;backdrop-filter:blur(16px) saturate(125%);-webkit-backdrop-filter:blur(16px) saturate(125%);box-shadow:0 8px 28px rgba(25,50,73,.05)}
  .site-header .brand-title{display:none!important}
  .site-header .divider-v{display:none!important}
  .site-header .nav{display:none!important}
@@ -140,7 +140,7 @@
  .site-header .master-logo img{max-width:130px;max-height:48px}
  main > :not(#xi-mobile-app){display:none!important}
  .site-footer{display:none!important}
- .xi-mobile-app{display:block;background:#f7f8f9;min-height:calc(100svh - 73px);color:#183248;padding-bottom:125px}
+ .xi-mobile-app{display:block;background:radial-gradient(circle at 86% 12%,rgba(102,181,212,.16),transparent 26%),radial-gradient(circle at 4% 58%,rgba(57,133,171,.11),transparent 24%),#f7f8f9;min-height:calc(100svh - 73px);color:#183248;padding-bottom:125px}
  .xi-mobile-app *{box-sizing:border-box}
  .xi-mobile-app .xi-view[hidden]{display:none!important}
  .xi-home{max-width:480px;margin:auto;padding:19px 22px 5px}
@@ -149,18 +149,30 @@
  .xi-intro h1{font-size:clamp(23px,6.5vw,32px);line-height:1.24;letter-spacing:-.062em;margin:0;color:#173349;font-weight:760}
  .xi-intro h1 strong{color:#2c8cab}
  .xi-intro > p:last-child{font-size:12px;color:#697984;margin-top:10px}
- .xi-portal{display:grid;gap:13px;margin-top:18px;padding:2px 10px 3px}
- .xi-tile{position:relative;display:flex;flex-direction:column;justify-content:center;min-height:150px;padding:24px 25px;text-decoration:none!important;color:#fff!important;border-radius:34px 60px 30px 48px;isolation:isolate;overflow:visible;box-shadow:0 13px 26px rgba(29,62,85,.09);transition:transform .28s cubic-bezier(.2,.7,.2,1),box-shadow .28s ease;}
- .xi-tile:before{content:'';position:absolute;z-index:-1;inset:0;transform:translate(-10px,10px) rotate(-4deg);border:2px solid currentColor;border-radius:35px 62px 35px 49px;opacity:.7}
+ .xi-portal{display:grid;gap:16px;margin-top:18px;padding:2px 10px 18px;perspective:900px}
+ .xi-tile{--tile-rx:0deg;--tile-ry:0deg;--tile-mx:50%;--tile-my:50%;position:relative;display:flex;flex-direction:column;justify-content:center;min-height:150px;padding:24px 25px;text-decoration:none!important;color:#fff!important;border-radius:34px 60px 30px 48px;isolation:isolate;overflow:visible;cursor:pointer;transform-style:preserve-3d;box-shadow:0 13px 26px rgba(29,62,85,.09);transition:transform .32s cubic-bezier(.2,.75,.2,1),box-shadow .32s ease,filter .32s ease;will-change:transform}
+ .xi-tile:before{content:'';position:absolute;z-index:-1;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.1),rgba(213,237,244,.03));border:1px solid rgba(255,255,255,.82);border-radius:35px 62px 35px 49px;box-shadow:inset 0 1px 0 rgba(255,255,255,.72),0 10px 28px rgba(25,50,73,.08)}
+ .xi-tile:after{content:'';position:absolute;z-index:0;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(circle at var(--tile-mx) var(--tile-my),rgba(255,255,255,.1),transparent 34%);opacity:0;transition:opacity .28s ease}
+ .xi-tile>*{position:relative;z-index:1}
  .xi-tile:focus-visible{outline:3px solid #e9aa4a;outline-offset:5px}
  .xi-tile:active{transform:scale(.985)}
- .xi-tile-a{background:#3985ab;border:1px solid rgba(255,255,255,.25);margin-left:14px;}
- .xi-tile-b{background:#193249;margin-right:12px;border-radius:48px 32px 50px 28px;}
- .xi-tile-c{background:#6cb5d4;margin-left:17px;color:#092c41!important}
+ .xi-tile-a{background:#3985ab;border:1px solid rgba(255,255,255,.25);margin-left:10px}
+ .xi-tile-a:before{transform:translate(-8px,9px) rotate(-2.2deg)}
+ .xi-tile-b{background:#193249;margin-right:10px;border-radius:48px 32px 50px 28px}
+ .xi-tile-b:before{transform:translate(8px,9px) rotate(2.2deg)}
+ .xi-tile-c{background:#6cb5d4;margin-left:10px;color:#092c41!important}
+ .xi-tile-c:before{transform:translate(-8px,9px) rotate(-2.2deg)}
  .xi-tile-index{font-size:10px;opacity:.8;font-weight:750;letter-spacing:.16em;margin-bottom:8px}
  .xi-tile strong{font-size:clamp(25px,7.5vw,36px);letter-spacing:-.055em;line-height:1.22;font-weight:800}
- .xi-tile >span:last-child{font-size:12px;opacity:.88;margin-top:10px;font-weight:600}
- .xi-tile >span:last-child span{font-size:17px;display:inline-block;vertical-align:-1px;padding-left:4px}
+ .xi-tile-copy{font-size:12px;opacity:.88;margin-top:10px;font-weight:600}
+ .xi-tile-action{position:absolute!important;z-index:2!important;top:19px;right:21px;display:inline-flex;align-items:center;gap:6px;min-height:32px;padding:0 11px;border:1px solid rgba(255,255,255,.5);border-radius:999px;background:rgba(255,255,255,.16);box-shadow:inset 0 1px 0 rgba(255,255,255,.22);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);font-size:11px;font-weight:780;letter-spacing:-.02em;transition:background .25s ease,transform .25s ease}
+ .xi-tile-action b{font-size:15px;font-weight:600;transition:transform .25s ease}
+ .xi-tile-c .xi-tile-action{border-color:rgba(9,44,65,.22);background:rgba(255,255,255,.3)}
+ .xi-tile.is-highlighted{transform:translateY(-3px) scale(1.012);box-shadow:0 21px 42px rgba(25,59,79,.16);filter:saturate(1.04)}
+ .xi-tile.is-highlighted:after,.xi-tile.is-pointer-active:after{opacity:.72}
+ .xi-tile.is-highlighted .xi-tile-action{background:rgba(255,255,255,.25);transform:translateY(-1px)}
+ .xi-tile.is-highlighted .xi-tile-action b{transform:translate(2px,-2px)}
+ .xi-tile.is-pointer-active{transform:perspective(700px) rotateX(var(--tile-rx)) rotateY(var(--tile-ry)) translateY(-4px) scale(1.012);box-shadow:0 23px 46px rgba(25,59,79,.17)}
  .xi-footnote{text-align:center;color:#93a0a7;font-size:11px;margin:20px 0 0}
  .xi-detail{max-width:620px;margin:auto;padding:12px 22px 32px}
  .xi-back{appearance:none;border:0;background:transparent;color:#183248;font-size:21px;display:flex;align-items:center;gap:9px;padding:8px 0 15px;cursor:pointer}
@@ -228,8 +240,8 @@
  .mobile-call{box-shadow:0 -10px 24px rgba(35,67,90,.07)}
 }
 @media(max-width:380px){.xi-home{padding-inline:15px}.xi-tile{min-height:138px;padding:21px 24px}.xi-portal{gap:12px}.xi-intro h1{font-size:24px}.xi-detail{padding-inline:18px}.xi-carousel-wrap{margin-right:-18px}.xi-card-track{padding-right:18px}}
-@media(hover:hover){.xi-tile:hover{transform:translateY(-3px);box-shadow:0 18px 32px rgba(29,62,85,.13)}.xi-inline-cta:hover{filter:brightness(1.09)}}
-@media(prefers-reduced-motion:reduce){.xi-mobile-app *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media(hover:hover){.xi-tile:hover{box-shadow:0 23px 46px rgba(25,59,79,.17)}.xi-tile:hover .xi-tile-action{background:rgba(255,255,255,.26)}.xi-tile:hover .xi-tile-action b{transform:translate(2px,-2px)}.xi-inline-cta:hover{filter:brightness(1.09)}}
+@media(prefers-reduced-motion:reduce){.xi-mobile-app *{animation:none!important;transition:none!important;scroll-behavior:auto!important}.xi-tile.is-highlighted,.xi-tile.is-pointer-active{transform:none!important;filter:none!important}.xi-tile:after{display:none!important}}
 
 /* Astro v1.7 integration and accessibility refinements. */
 .skip-link{position:fixed;z-index:100;top:10px;left:10px;padding:10px 14px;border-radius:8px;background:#193249;color:#fff;transform:translateY(-160%);transition:transform .18s ease}
@@ -272,3 +284,10 @@
 }
 @media(max-width:430px){.xi-expertise-list{grid-template-columns:1fr}.xi-mobile-day>div{grid-template-columns:1fr}.xi-slider-arrows button{min-width:80px;padding:0 12px}}
 @media(prefers-reduced-motion:reduce){.program-bento-card{transition:none!important}}
+
+/* v1.9 — Soft Clinical Glass and clearer mobile card affordance. */
+@media(max-width:600px){
+ .mobile-call{left:10px;right:10px;bottom:max(8px,env(safe-area-inset-bottom));padding:8px;border:1px solid rgba(255,255,255,.8);border-radius:22px;background:rgba(255,255,255,.76);box-shadow:0 15px 40px rgba(25,50,73,.16),inset 0 1px 0 rgba(255,255,255,.82);backdrop-filter:blur(18px) saturate(125%);-webkit-backdrop-filter:blur(18px) saturate(125%)}
+ .mobile-call a{border-radius:15px;box-shadow:0 8px 20px rgba(32,110,136,.2)}
+ .mobile-phone-note{padding:0 7px 2px}
+}

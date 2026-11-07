@@ -28,13 +28,61 @@
     const app = document.getElementById('xi-mobile-app');
     if (!app) return;
     const views = Array.from(app.querySelectorAll('[data-view]'));
+    const tiles = Array.from(app.querySelectorAll('.xi-tile'));
     const validViews = ['home', 'about', 'programs', 'visit'];
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let tileFrame = 0;
+    const updateTileEmphasis = () => {
+      tileFrame = 0;
+      if (reduceMotion || !window.matchMedia('(max-width: 850px)').matches || app.dataset.current !== 'home') {
+        tiles.forEach((tile) => tile.classList.remove('is-highlighted'));
+        return;
+      }
+      const focusLine = window.innerHeight * 0.48;
+      let closest = null;
+      let closestDistance = Infinity;
+      tiles.forEach((tile) => {
+        const rect = tile.getBoundingClientRect();
+        if (rect.bottom <= 0 || rect.top >= window.innerHeight) return;
+        const distance = Math.abs(rect.top + rect.height / 2 - focusLine);
+        if (distance < closestDistance) { closest = tile; closestDistance = distance; }
+      });
+      tiles.forEach((tile) => tile.classList.toggle('is-highlighted', tile === closest));
+    };
+    const scheduleTileEmphasis = () => {
+      if (tileFrame) return;
+      tileFrame = requestAnimationFrame(updateTileEmphasis);
+    };
+    window.addEventListener('scroll', scheduleTileEmphasis, { passive: true });
+    window.addEventListener('resize', scheduleTileEmphasis, { passive: true });
+    if (!reduceMotion && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      tiles.forEach((tile) => {
+        tile.addEventListener('pointermove', (event) => {
+          const rect = tile.getBoundingClientRect();
+          const x = (event.clientX - rect.left) / rect.width;
+          const y = (event.clientY - rect.top) / rect.height;
+          tile.style.setProperty('--tile-rx', `${((0.5 - y) * 3).toFixed(2)}deg`);
+          tile.style.setProperty('--tile-ry', `${((x - 0.5) * 3).toFixed(2)}deg`);
+          tile.style.setProperty('--tile-mx', `${(x * 100).toFixed(1)}%`);
+          tile.style.setProperty('--tile-my', `${(y * 100).toFixed(1)}%`);
+          tile.classList.add('is-pointer-active');
+        });
+        tile.addEventListener('pointerleave', () => {
+          tile.classList.remove('is-pointer-active');
+          tile.style.removeProperty('--tile-rx');
+          tile.style.removeProperty('--tile-ry');
+          tile.style.removeProperty('--tile-mx');
+          tile.style.removeProperty('--tile-my');
+        });
+      });
+    }
     const setView = (requestedView, updateHistory = true) => {
       const view = validViews.includes(requestedView) ? requestedView : 'home';
       views.forEach((item) => { item.hidden = item.dataset.view !== view; });
       app.dataset.current = view;
       if (updateHistory) history.pushState({ xi: view }, '', view === 'home' ? '#mobile-home' : `#mobile-${view}`);
       window.scrollTo({ top: 0, behavior: 'instant' });
+      scheduleTileEmphasis();
     };
     app.querySelectorAll('[data-xi-target]').forEach((control) => control.addEventListener('click', (event) => {
       event.preventDefault();
