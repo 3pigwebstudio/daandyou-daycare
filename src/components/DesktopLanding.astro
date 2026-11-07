@@ -1,6 +1,6 @@
 ---
 import PhoneLink from './PhoneLink.astro';
-import { center, contact, dailyMoments, faqs, media, mediaStatusLabel, programs, team, trustFacts } from '../data/site';
+import { center, contact, dailyMoments, faqs, media, mediaStatusLabel, programs, team } from '../data/site';
 
 const directionsUrl = center.address
   ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(center.address)}`
@@ -17,10 +17,6 @@ const mapEmbedUrl = center.address
       <h1 id="hero-title">재활의 전문성을<br /><em>일상의 돌봄</em>으로.</h1>
     </header>
 
-    <div aria-label="다앤유의 전문성" class="hero-board-facts">
-      {trustFacts.map((fact) => <span><b>{fact.index}</b>{fact.title}</span>)}
-    </div>
-
     <article class="hero-board-story">
       <span class="hero-board-kicker">BEGIN A BETTER DAY</span>
       <h2>평범한 하루 전체를 바라봅니다.</h2>
@@ -33,14 +29,12 @@ const mapEmbedUrl = center.address
     <figure class="hero-board-visual hero-board-visual-care">
       <img alt={media.hero.alt} fetchpriority="high" src={media.hero.src} />
       <figcaption>{mediaStatusLabel[media.hero.status]}</figcaption>
-      <div class="hero-board-photo-tag">식사 · 관계 · 일상</div>
       <div class="hero-board-visual-copy"><small>EVERYDAY CARE</small><strong>편안한 하루,<br />함께하는 돌봄</strong></div>
     </figure>
 
     <figure class="hero-board-visual hero-board-visual-rehab">
       <img alt={media.movement.alt} src={media.movement.src} />
       <figcaption>{mediaStatusLabel[media.movement.status]}</figcaption>
-      <div class="hero-board-photo-tag">재활 활동 · 움직임</div>
       <div class="hero-board-visual-copy"><small>REHABILITATION</small><strong>움직임을 일상과<br />연결합니다.</strong></div>
     </figure>
 

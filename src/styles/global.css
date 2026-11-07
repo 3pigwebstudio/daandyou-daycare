@@ -300,9 +300,6 @@
 .hero-board-title .hero-chip{margin:0 0 13px;font-size:10px;letter-spacing:.12em}
 .hero-board-title h1{font-size:clamp(46px,4.4vw,66px);line-height:1.04;letter-spacing:-.07em;margin:0;max-width:700px}
 .hero-board-title h1 em{color:#247c94}
-.hero-board-facts{grid-column:3;grid-row:1;display:flex;align-items:flex-end;justify-content:flex-end;gap:7px;flex-wrap:wrap;padding:0 0 8px}
-.hero-board-facts span{display:inline-flex;align-items:center;gap:7px;min-height:30px;padding:0 10px;border:1px solid rgba(255,255,255,.85);border-radius:999px;background:rgba(255,255,255,.58);box-shadow:inset 0 1px 0 rgba(255,255,255,.8);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#375865;font-size:10px;font-weight:720;white-space:nowrap}
-.hero-board-facts b{color:#2d879f;font-size:9px;letter-spacing:.06em}
 .hero-board-story,.hero-board-visual,.hero-board-menu{border:1px solid rgba(255,255,255,.78);box-shadow:0 18px 42px rgba(28,61,77,.08)}
 .hero-board-story{grid-column:1;grid-row:2;display:flex;flex-direction:column;align-items:flex-start;padding:30px 25px 25px;border-radius:28px;background:rgba(255,255,255,.82);backdrop-filter:blur(16px) saturate(120%);-webkit-backdrop-filter:blur(16px) saturate(120%)}
 .hero-board-kicker{font-size:9px;letter-spacing:.16em;color:#347f96;font-weight:800}
@@ -335,7 +332,7 @@
 @media(hover:hover) and (pointer:fine){.hero-board-visual:hover img{transform:scale(1.025)}.hero-menu-card:hover{transform:translateX(-4px);box-shadow:0 15px 30px rgba(25,50,73,.14);filter:saturate(1.04)}.hero-menu-card:hover b{transform:translate(2px,-2px)}}
 @media(max-width:1180px) and (min-width:851px){
  .hero-board-grid{grid-template-columns:minmax(205px,.8fr) repeat(2,minmax(0,1fr));grid-template-rows:auto minmax(470px,1fr) auto}
- .hero-board-title{grid-column:1/3}.hero-board-facts{grid-column:3}.hero-board-story{grid-column:1;grid-row:2}.hero-board-visual{grid-column:2/4;grid-row:2}.hero-board-visual img{min-height:470px}
+ .hero-board-title{grid-column:1/4}.hero-board-story{grid-column:1;grid-row:2}.hero-board-visual{grid-column:2/4;grid-row:2}.hero-board-visual img{min-height:470px}
  .hero-board-menu{grid-column:1/4;grid-row:3;grid-template-columns:repeat(3,1fr);grid-template-rows:auto;gap:10px}
  .hero-board-menu-head{grid-column:1/-1;display:flex;align-items:end;justify-content:space-between;padding:5px 6px 8px}.hero-board-menu-head small{margin:0}.hero-board-menu-head strong{font-size:18px;text-align:right}.hero-menu-card{min-height:145px}
 }
@@ -364,9 +361,8 @@
  .site-header .header-inner{max-width:1780px}
  .hero-board{height:calc(100svh - 88px);min-height:800px;max-height:980px}
  .hero-board-grid{width:100%;height:100%;max-width:1780px;grid-template-columns:minmax(250px,.82fr) minmax(0,1.08fr) minmax(0,1.08fr) minmax(280px,.92fr);grid-template-rows:auto minmax(0,1fr);gap:20px;padding:28px 48px 32px}
- .hero-board-title{grid-column:1/3;padding:0 4px 7px}
+ .hero-board-title{grid-column:1/4;padding:0 4px 7px}
  .hero-board-title h1{font-size:clamp(58px,4.05vw,80px);max-width:830px}
- .hero-board-facts{grid-column:3;padding-bottom:11px}
  .hero-board-story{grid-column:1;grid-row:2}
  .hero-board-visual-care{grid-column:2;grid-row:2}
  .hero-board-visual-rehab{grid-column:3;grid-row:2}
@@ -382,7 +378,6 @@
 .hero-board-visual-care img{object-position:58% center}
 .hero-board-visual-rehab img{object-position:56% center;filter:saturate(.94) contrast(1.03)}
 .hero-board-visual-rehab::after{background:linear-gradient(180deg,rgba(7,31,45,.08) 30%,rgba(8,35,50,.82) 100%)}
-.hero-board-photo-tag{position:absolute;z-index:3;top:17px;left:17px;min-height:36px;display:inline-flex;align-items:center;padding:0 13px;border:1px solid rgba(255,255,255,.6);border-radius:999px;background:rgba(255,255,255,.76);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#214b5c;font-size:11px;font-weight:780}
 .hero-board-visual-copy{left:27px;right:24px;bottom:28px}
 .hero-board-visual-copy small{font-size:10px}
 .hero-board-visual-copy strong{font-size:clamp(29px,2.15vw,42px);line-height:1.24}
@@ -406,9 +401,8 @@
 @media(max-width:1279px) and (min-width:1024px){
  .hero-board{height:auto;max-height:none;min-height:0}
  .hero-board-grid{grid-template-columns:minmax(230px,.8fr) repeat(2,minmax(0,1fr));grid-template-rows:auto minmax(530px,1fr) auto;gap:15px;padding:28px 28px 32px;max-width:1180px}
- .hero-board-title{grid-column:1/3;grid-row:1}
+ .hero-board-title{grid-column:1/4;grid-row:1}
  .hero-board-title h1{font-size:clamp(50px,5.3vw,66px)}
- .hero-board-facts{grid-column:3;grid-row:1}
  .hero-board-story{grid-column:1;grid-row:2}
  .hero-board-visual-care{grid-column:2;grid-row:2}
  .hero-board-visual-rehab{grid-column:3;grid-row:2}
@@ -422,15 +416,14 @@
 }
 @media(max-width:1023px) and (min-width:851px){
  .hero-board{height:auto;max-height:none;min-height:0}
- .hero-board-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto auto auto minmax(500px,1fr) auto;gap:16px;padding:28px 28px 34px}
+ .hero-board-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto auto minmax(500px,1fr) auto;gap:16px;padding:28px 28px 34px}
  .hero-board-title{grid-column:1/3;grid-row:1}
  .hero-board-title h1{font-size:clamp(52px,7vw,68px);max-width:760px}
- .hero-board-facts{grid-column:1/3;grid-row:2;justify-content:flex-start;padding:0}
- .hero-board-story{grid-column:1/3;grid-row:3;padding:24px 4px;display:grid;grid-template-columns:1fr 1fr;column-gap:36px}
+ .hero-board-story{grid-column:1/3;grid-row:2;padding:24px 4px;display:grid;grid-template-columns:1fr 1fr;column-gap:36px}
  .hero-board-story .hero-board-kicker,.hero-board-story h2{grid-column:1}.hero-board-story p,.hero-board-story .hero-board-keywords{grid-column:2}
  .hero-board-story .btn,.hero-board-story .hero-note{grid-column:1;align-self:end}
- .hero-board-visual-care{grid-column:1;grid-row:4}.hero-board-visual-rehab{grid-column:2;grid-row:4}
- .hero-board-menu{grid-column:1/3;grid-row:5;grid-template-columns:repeat(3,1fr);grid-template-rows:auto;gap:10px}
+ .hero-board-visual-care{grid-column:1;grid-row:3}.hero-board-visual-rehab{grid-column:2;grid-row:3}
+ .hero-board-menu{grid-column:1/3;grid-row:4;grid-template-columns:repeat(3,1fr);grid-template-rows:auto;gap:10px}
  .hero-board-menu-head{grid-column:1/-1;display:flex;align-items:end;justify-content:space-between}
  .hero-menu-card{min-height:145px}
 }
