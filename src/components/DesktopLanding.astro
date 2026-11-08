@@ -21,20 +21,11 @@ const mapEmbedUrl = center.address
       <span class="hero-board-kicker">BEGIN A BETTER DAY</span>
       <h2>평범한 하루 전체를 바라봅니다.</h2>
       <p>식사하는 순간부터 걷고 움직이는 하루까지. 다앤유의 전문성이 어르신의 일상과 함께합니다.</p>
-      <div class="hero-board-keywords"><span>식사</span><span>움직임</span><span>인지</span><span>일상</span></div>
       <PhoneLink class="btn btn-primary" label="이용 상담하기" withIcon><span aria-hidden="true">↗</span></PhoneLink>
       {contact.isProvisional && <small class="hero-note provisional-contact">현재 기존 다앤유 방문재활 대표번호로 연결됩니다.</small>}
     </article>
 
     <div class="hero-board-gallery">
-      <svg aria-hidden="true" class="hero-board-clips" focusable="false">
-        <defs>
-          <clipPath id="care-frame-clip" clipPathUnits="objectBoundingBox">
-            <path d="M .055 0 H .62 C .655 0 .68 .025 .68 .06 V .09 H .945 C .975 .09 1 .115 1 .145 V .945 C 1 .975 .975 1 .945 1 H .055 C .025 1 0 .975 0 .945 V .055 C 0 .025 .025 0 .055 0 Z" />
-          </clipPath>
-        </defs>
-      </svg>
-
       <figure class="hero-board-visual hero-board-visual-care">
         <img alt={media.hero.alt} fetchpriority="high" src={media.hero.src} />
         <figcaption>{mediaStatusLabel[media.hero.status]}</figcaption>
