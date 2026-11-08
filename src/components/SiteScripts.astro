@@ -34,7 +34,10 @@
       views.forEach((item) => { item.hidden = item.dataset.view !== view; });
       app.dataset.current = view;
       if (updateHistory) history.pushState({ xi: view }, '', view === 'home' ? '#mobile-home' : `#mobile-${view}`);
-      window.scrollTo({ top: 0, behavior: 'instant' });
+      // Desktop hash navigation must retain its native anchor position.
+      if (window.matchMedia('(max-width: 850px)').matches) {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      }
     };
     app.querySelectorAll('[data-xi-target]').forEach((control) => control.addEventListener('click', (event) => {
       event.preventDefault();
@@ -43,9 +46,23 @@
     document.querySelector('.site-header .brand')?.addEventListener('click', (event) => {
       if (window.matchMedia('(max-width: 850px)').matches) { event.preventDefault(); setView('home'); }
     });
-    const viewFromHash = () => location.hash.startsWith('#mobile-') ? location.hash.replace('#mobile-', '') : 'home';
-    window.addEventListener('popstate', () => setView(viewFromHash(), false));
-    setView(viewFromHash(), false);
+    // Support shared desktop section URLs on the separate mobile app.
+    // Keep the original hash so the same URL works on both layouts.
+    const viewFromHash = () => {
+      const hash = location.hash;
+      const sharedSectionViews = {
+        '#why': 'about',
+        '#people': 'about',
+        '#care': 'programs',
+        '#guide': 'visit',
+        '#contact': 'visit',
+      };
+      return sharedSectionViews[hash] || (hash.startsWith('#mobile-') ? hash.slice('#mobile-'.length) : 'home');
+    };
+    const syncViewFromHash = () => setView(viewFromHash(), false);
+    window.addEventListener('popstate', syncViewFromHash);
+    window.addEventListener('hashchange', syncViewFromHash);
+    syncViewFromHash();
 
     const track = document.getElementById('xi-card-track');
     if (!track) return;
