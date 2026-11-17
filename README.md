@@ -12,7 +12,7 @@
 - **서비스 특성:** 식이·연하 관련 지원, LSVT BIG 기반 움직임 프로그램
 - **전환 UX:** 모든 주요 화면에서 3클릭 이내 전화 접근 (실제 통화 연결은 별도 검증 필요)
 - **검색·공유:** canonical, Open Graph, Twitter Card, sitemap, robots, Organization 구조화 데이터
-- **최종 도메인:** `dnucare.co.kr` 등록 완료, 카페24 DNS와 Cloudflare 연결 전
+- **최종 도메인:** `https://dnucare.co.kr/` 등록·Cloudflare 연결·HTTPS 적용 완료
 - **디자인:** Calm Editorial Healthcare; 통합 색상 #206E88 / #193249 / #D8EAF3 / #27343B
 
 ## 로컬 실행
@@ -69,7 +69,7 @@ Cloudflare Workers Static Assets를 기본 배포 방식으로 사용합니다. 
 npm run deploy
 ```
 
-Cloudflare 로그인이 끝난 환경에서 위 명령을 실행하면 `npm run build` 후 Workers에 배포됩니다. 최종 운영 도메인 `dnucare.co.kr`은 등록됐으며, 카페24 DNS와 Workers 사용자 지정 도메인 연결 후 canonical·sitemap·robots를 전환합니다.
+Cloudflare 로그인이 끝난 환경에서 위 명령을 실행하면 `npm run build` 후 Workers에 배포됩니다. 최종 운영 도메인은 `https://dnucare.co.kr/`이며 canonical·sitemap·robots도 동일한 주소를 사용합니다.
 
 ## 권장 GitHub 설정
 

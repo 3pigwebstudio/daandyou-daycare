@@ -2,9 +2,9 @@
 
 > 기준일: 2026-11-17
 > 현재 버전: v2.3
-> 전체 제작 완료율: **81%**
+> 전체 제작 완료율: **83%**
 > 디자인·프론트엔드 구현 완료율: **96%**
-> 상태: 공개 미리보기 운영 중 · 최종 도메인 확정 · DNS와 운영정보 연결 전
+> 상태: 정식 도메인 공개 운영 중 · HTTPS 적용 완료 · 운영정보와 최종 사진 확정 전
 
 ## 1. 프로젝트 한눈에 보기
 
@@ -14,12 +14,12 @@
 | 공식 표기 | `다앤유 재활 데이케어센터` |
 | 저장소 | https://github.com/3pigwebstudio/daandyou-daycare |
 | 공개 미리보기 | https://daandyou-daycare.3pig-webstudio.workers.dev/ |
-| 최종 운영 도메인 | `dnucare.co.kr` · 2026-11-17 등록 · DNS 연결 전 |
+| 최종 운영 도메인 | https://dnucare.co.kr/ · 2026-11-17 등록·연결·HTTPS 적용 완료 |
 | 배포 | Cloudflare Workers Static Assets |
 | 프레임워크 | Astro 7 정적 사이트 |
 | 기준 브랜치 | `main` |
 | 기준 구현 커밋 | `93a768d feat: reshape desktop hero gallery` |
-| 기준 Cloudflare 버전 | `8ffa3b08-2d41-466e-b4b4-7dc477af363f` |
+| 기준 Cloudflare 버전 | `81ba5183-433f-492f-9831-f9b4279ab3bd` |
 | 주요 대상 | 데이케어센터 이용을 검토하는 50대 이상 보호자 |
 | 핵심 메시지 | 재활의 전문성을 일상의 돌봄으로 |
 | 핵심 전환 | 전화 상담 |
@@ -34,9 +34,9 @@
 | 데스크탑·모바일 UI 구현 | 25% | 96% | 24.0 |
 | 콘텐츠·사진·운영정보 | 20% | 60% | 12.0 |
 | 기능·접근성·반응형 QA | 15% | 78% | 11.7 |
-| SEO·GEO·AEO·로컬 검색 | 15% | 65% | 9.8 |
-| 배포·도메인·운영 준비 | 15% | 88% | 13.2 |
-| **합계** | **100%** |  | **80.7% → 81%** |
+| SEO·GEO·AEO·로컬 검색 | 15% | 75% | 11.3 |
+| 배포·도메인·운영 준비 | 15% | 95% | 14.3 |
+| **합계** | **100%** |  | **83.2% → 83%** |
 
 완료율은 공식 운영정보와 실기기 검수가 끝나면 갱신한다. 단순 디자인 수정만으로는 전체 완료율을 높이지 않는다.
 
@@ -83,6 +83,8 @@
 - 1980, 1440, 1024, 1023, 851, 430, 390, 360px 반응형 구성을 점검했다.
 - 대표 점검 폭에서 가로 스크롤과 브라우저 콘솔 오류가 없음을 확인했다.
 - canonical, Open Graph, Twitter Card, robots.txt, sitemap.xml, Organization JSON-LD를 구현했다.
+- `dnucare.co.kr`을 Cloudflare Workers 사용자 지정 도메인으로 연결하고 HTTPS 응답을 확인했다.
+- canonical, Open Graph URL, robots.txt, sitemap.xml을 정식 도메인으로 전환했다.
 
 ## 4. 확정된 디자인 원칙
 
@@ -179,8 +181,8 @@
 ### D. SEO·GEO·AEO
 
 - [ ] 미리보기 도메인 색인 차단 여부 결정 및 `noindex` 적용
-- [ ] 최종 도메인으로 canonical 교체
-- [ ] robots.txt와 sitemap.xml의 도메인 교체
+- [x] 최종 도메인으로 canonical 교체
+- [x] robots.txt와 sitemap.xml의 도메인 교체
 - [ ] Organization JSON-LD를 실제 정보 기반 LocalBusiness 계열로 확장
 - [ ] 업체명·주소·전화번호를 사이트와 외부 프로필에서 동일하게 통일
 - [ ] 주소·전화·운영시간·지도 좌표를 구조화 데이터에 반영
@@ -204,9 +206,9 @@
 
 ### F. 최종 배포
 
-- [ ] 최종 도메인을 Cloudflare에 연결
-- [ ] SSL과 www/비-www 리디렉션 확인
-- [ ] 최종 빌드·배포 실행
+- [x] 최종 도메인을 Cloudflare에 연결
+- [ ] SSL과 www/비-www 리디렉션 확인 (`dnucare.co.kr` HTTPS 완료, `www` 연결 전)
+- [x] 최종 빌드·배포 실행
 - [ ] 운영 URL에서 모바일·데스크탑 스모크 테스트
 - [ ] Search Console 소유권 확인 및 sitemap 제출
 - [ ] Bing Webmaster Tools 등록 및 IndexNow 적용 검토

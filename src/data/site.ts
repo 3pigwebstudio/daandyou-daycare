@@ -41,7 +41,7 @@ export const center = {
     '재활 전문성을 일상의 돌봄에 더하는 다앤유 재활 데이케어센터. 식사·삼킴 지원과 LSVT BIG 기반 움직임·균형 프로그램을 소개합니다.',
   logoUrl: 'https://cdn.imweb.me/thumbnail/20251118/380d41f33f811.png',
   websiteUrl: 'https://daandyou.com/',
-  publicUrl: 'https://daandyou-daycare.3pig-webstudio.workers.dev/',
+  publicUrl: 'https://dnucare.co.kr/',
   // 강서 센터 전용 운영 정보가 확정되면 아래 세 값만 교체하세요.
   phone: '',
   provisionalPhone: '02-6953-5776',
