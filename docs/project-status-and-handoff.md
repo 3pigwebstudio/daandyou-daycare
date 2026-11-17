@@ -18,7 +18,7 @@
 | 배포 | Cloudflare Workers Static Assets |
 | 프레임워크 | Astro 7 정적 사이트 |
 | 기준 브랜치 | `main` |
-| 기준 구현 커밋 | `93a768d feat: reshape desktop hero gallery` |
+| 기준 구현 커밋 | `7818a5f chore: switch production metadata to dnucare.co.kr` |
 | 기준 Cloudflare 버전 | `81ba5183-433f-492f-9831-f9b4279ab3bd` |
 | 주요 대상 | 데이케어센터 이용을 검토하는 50대 이상 보호자 |
 | 핵심 메시지 | 재활의 전문성을 일상의 돌봄으로 |
