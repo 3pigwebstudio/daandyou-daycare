@@ -52,24 +52,29 @@ export const center = {
 
 export const media = {
   hero: {
-    src: '/images/hero.webp',
-    alt: '밝은 공용 공간에서 어르신과 돌봄 인력이 함께하는 모습',
-    status: 'concept',
+    src: '/images/center-hero.jpg',
+    alt: '다앤유 재활 데이케어센터의 넓고 밝은 공용 생활 공간',
+    status: 'final',
+  },
+  signage: {
+    src: '/images/center-signage.jpg',
+    alt: '다앤유 재활 데이케어센터의 실내 브랜드 간판',
+    status: 'final',
   },
   mealSupport: {
-    src: '/images/meal_support.webp',
-    alt: '식사 시간에 어르신의 참여를 지원하는 모습',
-    status: 'concept',
+    src: '/images/center-dining.jpg',
+    alt: '다앤유 재활 데이케어센터의 식사와 생활을 위한 테이블 공간',
+    status: 'final',
   },
   movement: {
-    src: '/images/movement.webp',
-    alt: '어르신과 재활 전문인력이 움직임 활동을 하는 모습',
-    status: 'concept',
+    src: '/images/center-exercise.jpg',
+    alt: '다앤유 재활 데이케어센터의 재활 운동기구 공간',
+    status: 'final',
   },
   daycareLife: {
-    src: '/images/daycare_life.webp',
-    alt: '어르신들이 공용 공간에서 함께 이야기하는 모습',
-    status: 'concept',
+    src: '/images/center-living.jpg',
+    alt: '다앤유 재활 데이케어센터의 좌석과 테이블이 마련된 생활 공간',
+    status: 'final',
   },
 } satisfies Record<string, MediaAsset>;
 

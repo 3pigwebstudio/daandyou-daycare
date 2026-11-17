@@ -10,3 +10,6 @@ dist/
 .next/
 .wrangler/
 *.log
+
+# Local original photos may contain EXIF/GPS metadata; commit only optimized public copies.
+/이미지/

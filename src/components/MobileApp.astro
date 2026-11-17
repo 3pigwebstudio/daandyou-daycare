@@ -16,7 +16,7 @@ import { center, contact, dailyMoments, faqs, media, mediaStatusLabel, programs,
   <section aria-labelledby="xi-about-title" class="xi-view xi-detail" data-view="about" hidden>
     <button aria-label="메인 메뉴로 돌아가기" class="xi-back" data-xi-target="home" type="button">〈 <span>메인으로</span></button>
     <div class="xi-detail-head"><p class="xi-overline">ABOUT · DA&amp;YOU</p><h2 id="xi-about-title">돌봄의 하루에<br /><em>재활의 관점</em>을 더합니다.</h2><p>장기요양 현장의 경험과 작업치료 전문성을 결합한, 사람 중심의 데이케어를 지향합니다.</p></div>
-    <figure class="xi-photo"><img alt={media.daycareLife.alt} src={media.daycareLife.src} /><figcaption>{mediaStatusLabel[media.daycareLife.status]}</figcaption></figure>
+    <figure class="xi-photo"><img alt={media.signage.alt} src={media.signage.src} /><figcaption>{mediaStatusLabel[media.signage.status]}</figcaption></figure>
     <div class="xi-facts">
       {trustFacts.map((fact) => <article><b>{fact.index}</b><span><strong>{fact.title}</strong><small>{fact.description}</small></span></article>)}
     </div>
