@@ -4,5 +4,5 @@ import PhoneIcon from './PhoneIcon.astro';
 import { center, contact } from '../data/site';
 ---
 
-<footer class="site-footer"><div class="container footer-inner"><div><div class="footer-brand">{center.name}</div><div class="footer-detail">{center.address} · {center.postalCode}<br />대표전화 {contact.displayPhone} · 추가 문의 {contact.secondaryDisplayPhone}<br />{center.hours} · 송영 {center.transportArea}</div></div><div class="footer-right"><a href={center.websiteUrl} rel="noopener noreferrer" target="_blank">다앤유 기존 홈페이지 ↗</a><br />© DA&amp;YOU · Design concept by 3PIG</div></div></footer>
+<footer class="site-footer"><div class="container footer-inner"><div><div class="footer-brand">{center.name}</div><div class="footer-detail">{center.address} · {center.postalCode}<br />대표전화 {contact.displayPhone} · 추가 문의 {contact.secondaryDisplayPhone}<br />{center.hours} · 등원·귀가 차량 지원 {center.transportArea}</div></div><div class="footer-right"><a href={center.websiteUrl} rel="noopener noreferrer" target="_blank">다앤유 기존 홈페이지 ↗</a><br />© DA&amp;YOU · Design concept by 3PIG</div></div></footer>
 <div class="mobile-call"><PhoneLink label="이용 상담하기"><PhoneIcon /></PhoneLink>{contact.isProvisional && <small class="mobile-phone-note provisional-contact">현재 다앤유 방문재활 대표번호로 연결됩니다</small>}</div>
