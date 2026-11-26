@@ -248,6 +248,7 @@
 .skip-link:focus{transform:translateY(0)}
 .map-visual iframe{display:block;width:100%;height:100%;border:0}
 .xi-visit-block .xi-inline-cta{margin-top:16px}
+.team-word:last-child:nth-child(odd){grid-column:1/-1;border-right:0}.xi-map-placeholder small{font-size:10px;font-weight:750;color:#2c7c9b}.xi-map-placeholder:hover{background:linear-gradient(130deg,#d9e9eb,#eef4f2)}
 @media(prefers-reduced-motion:reduce){.skip-link{transition:none}}
 
 /* v1.8 — Approved visual direction, strengthened content parity and usability. */

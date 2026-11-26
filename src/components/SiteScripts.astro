@@ -13,6 +13,21 @@
     updateHeader();
     window.addEventListener('scroll', updateHeader, { passive: true });
 
+    document.addEventListener('click', (event) => {
+      const source = event.target instanceof Element ? event.target.closest('[data-analytics-event]') : null;
+      if (!(source instanceof HTMLElement)) return;
+      const eventName = source.dataset.analyticsEvent;
+      if (!eventName) return;
+      const detail = {
+        event: eventName,
+        event_label: source.dataset.analyticsLabel || source.textContent?.trim() || '',
+        link_url: source instanceof HTMLAnchorElement ? source.href : '',
+      };
+      if (Array.isArray(window.dataLayer)) window.dataLayer.push(detail);
+      if (typeof window.gtag === 'function') window.gtag('event', eventName, detail);
+      window.dispatchEvent(new CustomEvent('dnucare:conversion', { detail }));
+    });
+
     if ('IntersectionObserver' in window && Element.prototype.animate && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       const targets = document.querySelectorAll('.intro-grid,.team-grid,.section-head,.day-head,.guide-intro,.program-bento-lead,.program-bento-card,.day-item,.contact-inner');
       const observer = new IntersectionObserver((entries) => {

@@ -11,11 +11,37 @@ const canonicalUrl = new URL(Astro.url.pathname, center.publicUrl).toString();
 const socialImageUrl = new URL(media.hero.src, center.publicUrl).toString();
 const structuredData = {
   '@context': 'https://schema.org',
-  '@type': 'Organization',
+  '@type': 'LocalBusiness',
+  '@id': `${center.publicUrl}#center`,
   name: center.name,
   url: center.publicUrl,
   logo: center.logoUrl,
+  image: socialImageUrl,
   description: center.description,
+  telephone: center.phone,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '공항대로 329, 7층',
+    addressLocality: '강서구',
+    addressRegion: '서울특별시',
+    postalCode: center.postalCode,
+    addressCountry: 'KR',
+  },
+  areaServed: ['서울특별시 강서구', '서울특별시 양천구 인접 지역'],
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '08:00',
+      closes: '19:00',
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: 'Saturday',
+      opens: '08:00',
+      closes: '17:00',
+    },
+  ],
 };
 ---
 

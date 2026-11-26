@@ -54,7 +54,7 @@ const mapEmbedUrl = center.address
 
 <section class="section team-section" id="people">
   <div class="container team-grid">
-    <div><div class="eyebrow">EXPERTISE &amp; EXPERIENCE</div><h2 class="section-title">장비보다<br />사람의 전문성을<br />먼저 생각합니다.</h2><p class="section-copy">재활 전문가와 장기요양 실무자, 교육·학술 전문가의 경험을 연결하는 다앤유의 운영 철학.</p></div>
+    <div><div class="eyebrow">EXPERTISE &amp; EXPERIENCE</div><h2 class="section-title">장비보다<br />사람의 전문성을<br />먼저 생각합니다.</h2><p class="section-copy">장기요양 실무와 작업치료, 간호, 사회복지 경험을 연결하는 강서다앤유재활의 운영 철학입니다.</p></div>
     <div class="team-words">{team.map((member) => <div class="team-word"><small>{member.field}</small><strong>{member.name} · {member.role}</strong><span>{member.expertise}</span></div>)}</div>
   </div>
 </section>
@@ -93,7 +93,7 @@ const mapEmbedUrl = center.address
     <div aria-label="센터 이용에 필요한 정보" class="guide-panel">
       <div class="guide-row"><div class="guide-label">센터 위치</div><div class="guide-value"><strong>{center.address || '위치 안내 준비 중'}</strong><span>{center.address ? '아래 길찾기 버튼으로 위치를 확인하세요.' : '위치 확정 후 길찾기 바로가기가 제공됩니다.'}</span></div></div>
       <div class="guide-row"><div class="guide-label">운영 안내</div><div class="guide-value"><strong>{center.hours || '운영 정보 안내 준비 중'}</strong><span>이용 시간과 대상 등 기본 이용 정보를 안내합니다.</span></div></div>
-      <div class="guide-row"><div class="guide-label">이동 및 이용</div><div class="guide-value"><strong>이용 전 전화 상담</strong><span>송영 여부와 이용 적합성은 실제 운영 정보에 따라 안내합니다.</span></div></div>
+      <div class="guide-row"><div class="guide-label">송영 안내</div><div class="guide-value"><strong>{center.transportArea}</strong><span>거주지와 일정에 따른 송영 가능 여부 및 이용 조건은 전화로 확인해 주세요.</span></div></div>
       <div aria-label="센터 위치 및 길찾기" class="map-module">
         <div aria-live="polite" class="map-visual">
           {center.address && center.mapEmbedEnabled ? (
@@ -102,13 +102,13 @@ const mapEmbedUrl = center.address
             <div class="map-placeholder"><svg aria-hidden="true" fill="none" height="34" stroke="currentColor" stroke-width="1.6" viewBox="0 0 64 64" width="34"><path d="M12 16 25 10l14 6 13-6v38l-13 6-14-6-13 6V16Zm13-6v38m14-32v38"></path><circle cx="33" cy="26" r="5"></circle><path d="M33 31v6"></path></svg><span>센터 위치 안내</span><small>{center.address || '주소 확정 후 지도가 표시됩니다'}</small></div>
           )}
         </div>
-        <div class="map-bottom"><span>{center.address || '강서 센터 주소 확인 중'}</span>{directionsUrl && <a class="directions-link" href={directionsUrl} rel="noopener noreferrer" target="_blank">길찾기 열기 <span aria-hidden="true">↗</span></a>}</div>
+        <div class="map-bottom"><span>{center.address} · {center.postalCode}</span>{directionsUrl && <a class="directions-link" data-analytics-event="directions_click" data-analytics-label="desktop_guide" href={directionsUrl} rel="noopener noreferrer" target="_blank">길찾기 열기 <span aria-hidden="true">↗</span></a>}</div>
       </div>
       <div aria-label="이용 준비 상세 안내" class="practical-disclosure">
         <div class="disclosure-lead">이용 전 자주 묻는 질문</div>
         {faqs.map((faq) => <details class="disclosure-item"><summary>{faq.question}<span aria-hidden="true" class="disclosure-chevron">⌄</span></summary><div class="disclosure-body">{faq.answer}</div></details>)}
       </div>
-      <div class="guide-footer"><PhoneLink class="btn btn-primary" label="이용 상담하기"><span aria-hidden="true">↗</span></PhoneLink>{contact.isProvisional && <small class="provisional-contact">※ 현재 기존 다앤유 방문재활 대표번호로 연결됩니다. 강서 센터 번호 확정 후 교체합니다.</small>}</div>
+      <div class="guide-footer"><PhoneLink class="btn btn-primary" label="이용 상담하기"><span aria-hidden="true">↗</span></PhoneLink><small>대표전화 {contact.displayPhone} · 추가 문의 {contact.secondaryDisplayPhone}</small></div>
     </div>
   </div>
 </section>
