@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import BrandIntro from '../components/BrandIntro.astro';
 import DesktopLanding from '../components/DesktopLanding.astro';
 import MobileApp from '../components/MobileApp.astro';
 import SiteFooter from '../components/SiteFooter.astro';
@@ -8,11 +9,14 @@ import SiteScripts from '../components/SiteScripts.astro';
 ---
 
 <BaseLayout>
-  <SiteHeader />
-  <main id="main-content">
-    <MobileApp />
-    <DesktopLanding />
-  </main>
-  <SiteFooter />
-  <SiteScripts />
+  <div class="site-shell" id="site-shell">
+    <SiteHeader />
+    <main id="main-content">
+      <MobileApp />
+      <DesktopLanding />
+    </main>
+    <SiteFooter />
+    <SiteScripts />
+  </div>
+  <BrandIntro />
 </BaseLayout>

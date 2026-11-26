@@ -462,3 +462,32 @@
  .xi-tile strong{font-size:29px}
  .xi-tile-copy,.xi-tile>span:last-child{font-size:16px}
 }
+
+/* v2.6 — Quiet, precision-led brand entrance. */
+.site-shell{transform:scale(1);filter:none;opacity:1;transform-origin:center top}
+.brand-intro{position:fixed;z-index:1000;inset:0;display:grid;place-items:center;overflow:hidden;background:#fff;color:#20343f;opacity:1;transition:opacity .68s cubic-bezier(.32,0,.15,1),transform .68s cubic-bezier(.32,0,.15,1)}
+.brand-intro-stage{display:flex;flex-direction:column;align-items:center;width:min(86vw,620px);text-align:center;transform:translateY(9px)}
+.brand-intro-logo-wrap{display:grid;min-height:78px;place-items:center;opacity:0;transform:scale(.965);filter:blur(5px);transition:opacity .64s cubic-bezier(.2,.7,.2,1) .08s,transform .9s cubic-bezier(.2,.7,.2,1) .08s,filter .72s ease .08s}
+.brand-intro-logo{display:block;width:auto;max-width:220px;max-height:76px;object-fit:contain}
+.brand-intro-logo-fallback{font-size:42px;line-height:1;letter-spacing:-.075em;color:#474c50}
+.brand-intro-rule{width:0;height:1px;margin:27px 0 23px;background:#2b8197;opacity:.48;transition:width .72s cubic-bezier(.2,.7,.2,1) .42s}
+.brand-intro-name{margin:0;font-size:clamp(24px,2.4vw,36px);font-weight:760;line-height:1.35;letter-spacing:-.055em;opacity:0;transform:translateY(9px);transition:opacity .62s ease .34s,transform .75s cubic-bezier(.2,.7,.2,1) .34s}
+.brand-intro-name span+span::before{content:' '}
+.brand-intro-subtitle{margin:12px 0 0;color:#66808a;font-size:12px;font-weight:700;line-height:1.4;letter-spacing:.19em;opacity:0;transform:translateY(6px);transition:opacity .55s ease .57s,transform .65s cubic-bezier(.2,.7,.2,1) .57s}
+.brand-intro-skip{position:absolute;top:max(22px,env(safe-area-inset-top));right:max(24px,env(safe-area-inset-right));min-width:76px;min-height:44px;padding:0 12px;border:0;background:transparent;color:#687a82;font-size:14px;font-weight:650;cursor:pointer;opacity:0;transition:opacity .35s ease .65s,color .2s ease}
+.brand-intro-skip:hover{color:#1d596c}.brand-intro-skip:focus-visible{outline:3px solid #d9aa43;outline-offset:2px;border-radius:8px}
+.brand-intro.is-ready .brand-intro-logo-wrap{opacity:1;transform:scale(1);filter:blur(0)}
+.brand-intro.is-ready .brand-intro-rule{width:62px}
+.brand-intro.is-ready .brand-intro-name,.brand-intro.is-ready .brand-intro-subtitle{opacity:1;transform:translateY(0)}
+.brand-intro.is-ready .brand-intro-skip{opacity:1}
+.brand-intro.is-leaving{opacity:0;transform:translateY(-7px) scale(1.006);pointer-events:none}
+html.brand-intro-active{overflow:hidden}
+html.brand-intro-active .site-shell{opacity:.42;transform:scale(1.012);filter:blur(7px)}
+html.brand-intro-reveal .site-shell{opacity:1;transform:scale(1);filter:blur(0);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1),filter .72s ease}
+@media(max-width:600px){
+ .brand-intro-stage{width:calc(100vw - 52px);transform:translateY(-2px)}
+ .brand-intro-logo-wrap{min-height:62px}.brand-intro-logo{max-width:178px;max-height:62px}.brand-intro-logo-fallback{font-size:36px}
+ .brand-intro-rule{margin:23px 0 20px}.brand-intro-name{font-size:clamp(23px,6.5vw,29px);line-height:1.42}.brand-intro-name span{display:block}.brand-intro-name span+span::before{content:none}.brand-intro-subtitle{margin-top:10px;font-size:10px;letter-spacing:.16em}
+ .brand-intro-skip{top:max(13px,env(safe-area-inset-top));right:max(12px,env(safe-area-inset-right));font-size:13px}
+}
+@media(prefers-reduced-motion:reduce){.brand-intro{display:none!important}.site-shell{opacity:1!important;transform:none!important;filter:none!important}}

@@ -1,0 +1,63 @@
+---
+import { center } from '../data/site';
+---
+
+<section aria-label={`${center.name} 브랜드 소개`} class="brand-intro" id="brand-intro">
+  <button class="brand-intro-skip" id="brand-intro-skip" type="button">바로 보기</button>
+  <div class="brand-intro-stage">
+    <div class="brand-intro-logo-wrap">
+      <img alt="다앤유" class="brand-intro-logo" decoding="sync" id="brand-intro-logo" src={center.logoUrl} />
+      <strong class="brand-intro-logo-fallback" hidden id="brand-intro-logo-fallback">다앤유</strong>
+    </div>
+    <span aria-hidden="true" class="brand-intro-rule"></span>
+    <strong class="brand-intro-name"><span>강서다앤유재활</span><span>데이케어센터</span></strong>
+    <p class="brand-intro-subtitle">REHABILITATION DAY CARE</p>
+  </div>
+</section>
+
+<script is:inline>
+  (() => {
+    const intro = document.getElementById('brand-intro');
+    const shell = document.getElementById('site-shell');
+    if (!(intro instanceof HTMLElement) || !(shell instanceof HTMLElement)) return;
+
+    const storageKey = 'dnucare-brand-intro-v1';
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let alreadySeen = false;
+    try { alreadySeen = sessionStorage.getItem(storageKey) === 'seen'; } catch {}
+
+    const removeIntro = () => {
+      document.documentElement.classList.remove('brand-intro-active', 'brand-intro-reveal');
+      intro.remove();
+    };
+
+    if (reducedMotion || alreadySeen || window.location.hash) {
+      removeIntro();
+      return;
+    }
+
+    try { sessionStorage.setItem(storageKey, 'seen'); } catch {}
+    document.documentElement.classList.add('brand-intro-active');
+
+    const logo = document.getElementById('brand-intro-logo');
+    const fallback = document.getElementById('brand-intro-logo-fallback');
+    if (logo instanceof HTMLImageElement && fallback instanceof HTMLElement) {
+      const showFallback = () => { logo.hidden = true; fallback.hidden = false; };
+      logo.addEventListener('error', showFallback, { once: true });
+      if (logo.complete && logo.naturalWidth === 0) showFallback();
+    }
+
+    let finished = false;
+    const finish = () => {
+      if (finished) return;
+      finished = true;
+      document.documentElement.classList.add('brand-intro-reveal');
+      intro.classList.add('is-leaving');
+      window.setTimeout(removeIntro, 720);
+    };
+
+    document.getElementById('brand-intro-skip')?.addEventListener('click', finish);
+    requestAnimationFrame(() => requestAnimationFrame(() => intro.classList.add('is-ready')));
+    window.setTimeout(finish, 1580);
+  })();
+</script>
