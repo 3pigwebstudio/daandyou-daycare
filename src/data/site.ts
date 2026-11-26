@@ -53,8 +53,8 @@ export const center = {
 
 export const media = {
   hero: {
-    src: '/images/center-hero.jpg',
-    alt: '강서다앤유재활 데이케어센터의 넓고 밝은 공용 생활 공간',
+    src: '/images/activity-group-exercise.jpg',
+    alt: '강서다앤유재활 데이케어센터에서 어르신들이 직원과 함께 신체활동에 참여하는 모습',
     status: 'final',
   },
   signage: {
@@ -63,18 +63,23 @@ export const media = {
     status: 'final',
   },
   mealSupport: {
-    src: '/images/center-dining.jpg',
-    alt: '강서다앤유재활 데이케어센터의 식사와 생활을 위한 테이블 공간',
+    src: '/images/activity-meal-support.jpg',
+    alt: '강서다앤유재활 데이케어센터에서 직원이 어르신의 편안한 식사 참여를 돕는 모습',
     status: 'final',
   },
   movement: {
-    src: '/images/center-exercise.jpg',
-    alt: '강서다앤유재활 데이케어센터의 재활 운동기구 공간',
+    src: '/images/activity-rehab-walking.jpg',
+    alt: '강서다앤유재활 데이케어센터에서 어르신이 지원 인력과 함께 보행·균형 활동에 참여하는 모습',
+    status: 'final',
+  },
+  cognition: {
+    src: '/images/activity-cognitive-tablet.jpg',
+    alt: '강서다앤유재활 데이케어센터에서 직원과 어르신이 태블릿을 활용한 인지활동에 참여하는 모습',
     status: 'final',
   },
   daycareLife: {
-    src: '/images/center-living.jpg',
-    alt: '강서다앤유재활 데이케어센터의 좌석과 테이블이 마련된 생활 공간',
+    src: '/images/activity-social-movement.jpg',
+    alt: '강서다앤유재활 데이케어센터에서 어르신들이 함께 웃으며 소그룹 신체활동에 참여하는 모습',
     status: 'final',
   },
 } satisfies Record<string, MediaAsset>;
@@ -149,6 +154,7 @@ export const programs: Program[] = [
     title: '인지·신체 활동',
     description: '인지활동과 신체활동을 통해 의미 있는 일상 참여를 이어갈 수 있도록 돕습니다.',
     topic: '인지 · 신체 · 참여',
+    image: media.cognition,
   },
   {
     index: '04',
