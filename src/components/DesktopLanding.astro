@@ -1,6 +1,6 @@
 ---
 import PhoneLink from './PhoneLink.astro';
-import { center, contact, dailyMoments, faqs, media, mediaStatusLabel, programs, team } from '../data/site';
+import { center, contact, dailyMoments, faqs, media, programs, team } from '../data/site';
 
 const directionsUrl = center.address
   ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(center.address)}`
@@ -14,13 +14,13 @@ const mapEmbedUrl = center.address
   <div class="container hero-board-grid">
     <header class="hero-board-title">
       <div class="hero-chip">DA&amp;YOU · REHABILITATION DAY CARE</div>
-      <h1 id="hero-title">재활의 전문성을<br /><em>일상의 돌봄</em>으로.</h1>
+      <h1 id="hero-title">부모님의 편안한 하루,<br /><em>재활 전문인력</em>이 함께합니다.</h1>
     </header>
 
     <article class="hero-board-story">
       <span class="hero-board-kicker">BEGIN A BETTER DAY</span>
-      <h2>평범한 하루 전체를 바라봅니다.</h2>
-      <p>식사하는 순간부터 걷고 움직이는 하루까지. 다앤유의 전문성이 어르신의 일상과 함께합니다.</p>
+      <h2>가족처럼 세심하게,<br />전문가답게 돌봅니다.</h2>
+      <p>식사와 움직임, 인지활동과 휴식까지. 익숙한 일상을 편안하게 이어가실 수 있도록 한 분 한 분 살핍니다.</p>
       <PhoneLink class="btn btn-primary" label="이용 상담하기" withIcon><span aria-hidden="true">↗</span></PhoneLink>
       {contact.isProvisional && <small class="hero-note provisional-contact">현재 기존 다앤유 방문재활 대표번호로 연결됩니다.</small>}
     </article>
@@ -28,51 +28,49 @@ const mapEmbedUrl = center.address
     <div class="hero-board-gallery">
       <figure class="hero-board-visual hero-board-visual-care">
         <img alt={media.hero.alt} fetchpriority="high" src={media.hero.src} />
-        <figcaption>{mediaStatusLabel[media.hero.status]}</figcaption>
-        <div class="hero-board-visual-copy"><small>EVERYDAY CARE</small><strong>편안한 하루,<br />함께하는 돌봄</strong></div>
+        <div class="hero-board-visual-copy"><small>EVERYDAY CARE</small><strong>마음 놓을 수 있는<br />따뜻한 돌봄</strong></div>
       </figure>
 
       <figure class="hero-board-visual hero-board-visual-rehab">
         <img alt={media.movement.alt} src={media.movement.src} />
-        <figcaption>{mediaStatusLabel[media.movement.status]}</figcaption>
-        <div class="hero-board-visual-copy"><small>REHABILITATION</small><strong>움직임을 일상과<br />연결합니다.</strong></div>
+        <div class="hero-board-visual-copy"><small>REHABILITATION</small><strong>몸 상태에 맞춘<br />전문적인 도움</strong></div>
       </figure>
     </div>
 
     <nav aria-label="빠른 메뉴" class="hero-board-menu">
       <div class="hero-board-menu-head"><small>QUICK MENU</small><strong>원하는 정보를<br />바로 선택하세요.</strong></div>
-      <a class="hero-menu-card hero-menu-about" href="#why"><small>01 / ABOUT</small><strong>다앤유 소개</strong><span>전문성과 신뢰</span><b aria-hidden="true">↗</b></a>
-      <a class="hero-menu-card hero-menu-program" href="#care"><small>02 / PROGRAM</small><strong>전문 프로그램</strong><span>재활 관점의 하루</span><b aria-hidden="true">↗</b></a>
-      <a class="hero-menu-card hero-menu-visit" href="#guide"><small>03 / VISIT</small><strong>이용 안내</strong><span>상담·위치·이용</span><b aria-hidden="true">↗</b></a>
+      <a class="hero-menu-card hero-menu-about" href="#why"><small>01 / ABOUT</small><strong>다앤유 소개</strong><span>안심되는 돌봄</span><b aria-hidden="true">↗</b></a>
+      <a class="hero-menu-card hero-menu-program" href="#care"><small>02 / PROGRAM</small><strong>전문 프로그램</strong><span>부모님께 맞춘 하루</span><b aria-hidden="true">↗</b></a>
+      <a class="hero-menu-card hero-menu-visit" href="#guide"><small>03 / VISIT</small><strong>이용 안내</strong><span>처음부터 친절하게</span><b aria-hidden="true">↗</b></a>
     </nav>
   </div>
 </section>
 
 <section class="section" id="why">
-  <div class="container intro-grid"><div><div class="eyebrow">WHY DA&amp;YOU</div><h2 class="section-title">돌봄의 시간에<br />재활의 관점을<br />더합니다.</h2></div><div class="intro-right"><p>데이케어센터의 중심은 어르신의 <strong>하루 생활</strong>입니다. 다앤유는 오랜 장기요양 현장 경험과 재활 전문성을 바탕으로, 평범한 하루의 움직임과 식사까지 세심하게 바라봅니다.</p><div class="h-line"></div><p>특별한 운동 한 시간이 아니라, <strong>하루 전체에서 편안함과 안전함을 느낄 수 있도록</strong> 돕는 것이 우리의 방향입니다.</p><div class="micro-steps"><span>장기요양 현장 경험</span><span>작업치료 전문성</span><span>전문자문 네트워크</span></div></div></div>
+  <div class="container intro-grid"><div><div class="eyebrow">WHY DA&amp;YOU</div><h2 class="section-title">가족은 안심하고,<br />부모님은 편안한<br />하루.</h2></div><div class="intro-right"><p>부모님을 모시는 곳을 정하는 마음이 얼마나 조심스러운지 알고 있습니다. 다앤유는 오랜 장기요양 현장 경험과 재활 전문성을 바탕으로 <strong>식사, 움직임, 휴식까지 하루의 모든 순간</strong>을 세심하게 살핍니다.</p><div class="h-line"></div><p>정해진 활동에 어르신을 맞추기보다, 몸 상태와 익숙한 생활을 살펴 <strong>편안하고 안전하게 지내실 수 있도록</strong> 곁에서 돕겠습니다.</p><div class="micro-steps"><span>장기요양 현장 경험</span><span>작업치료 전문성</span><span>간호·복지 협력</span></div></div></div>
 </section>
 
 <section class="section team-section" id="people">
   <div class="container team-grid">
-    <div><div class="eyebrow">EXPERTISE &amp; EXPERIENCE</div><h2 class="section-title">장비보다<br />사람의 전문성을<br />먼저 생각합니다.</h2><p class="section-copy">장기요양 실무와 작업치료, 간호, 사회복지 경험을 연결하는 강서다앤유재활의 운영 철학입니다.</p></div>
+    <div><div class="eyebrow">EXPERTISE &amp; EXPERIENCE</div><h2 class="section-title">믿고 맡기실 수 있도록,<br />경험 있는 사람이<br />함께합니다.</h2><p class="section-copy">장기요양 실무와 작업치료, 간호, 사회복지의 경험을 모아 부모님의 몸과 마음, 생활을 함께 살핍니다.</p></div>
     <div class="team-words">{team.map((member) => <div class="team-word"><small>{member.field}</small><strong>{member.name} · {member.role}</strong><span>{member.expertise}</span></div>)}</div>
   </div>
 </section>
 
 <section class="section program-section" id="care">
   <div class="container">
-    <div class="section-head"><div class="eyebrow">SPECIALIZED CARE</div><h2 class="section-title">재활의 관점으로 살펴보는<br />다앤유의 하루</h2><p class="section-copy">식사와 움직임에서 인지·일상 활동까지. 각각의 활동을 따로 떼어 보기보다 어르신의 하루 안에서 연결합니다.</p></div>
+    <div class="section-head"><div class="eyebrow">SPECIALIZED CARE</div><h2 class="section-title">몸과 마음을 함께 살피는<br />다앤유의 하루</h2><p class="section-copy">식사와 움직임부터 인지·일상 활동까지, 부모님께 필요한 도움을 하루의 흐름 안에서 자연스럽게 이어갑니다.</p></div>
     <div class="program-bento">
       <article class="program-bento-lead">
         <span class="program-no">DA&amp;YOU · CARE PRINCIPLE</span>
-        <h3>특별한 한 시간이 아니라,<br />하루 전체를 바라봅니다.</h3>
-        <p>프로그램의 실제 제공 범위와 개인별 이용 적합성은 상담 과정에서 안내합니다.</p>
+        <h3>한 가지 활동보다,<br />부모님의 하루 전체를 봅니다.</h3>
+        <p>몸 상태와 생활 습관을 살펴 부모님께 맞는 활동과 도움을 함께 찾아드립니다.</p>
         <a class="inline-link" href="#guide">이용 안내 확인하기 <span aria-hidden="true">↗</span></a>
       </article>
       {programs.map((program, index) => (
         <article aria-label={`${program.title} 프로그램`} class={`program-bento-card program-bento-card-${index + 1}`}>
           {program.image ? (
-            <figure class="program-bento-media"><img alt={program.image.alt} loading="lazy" src={program.image.src} /><figcaption>{mediaStatusLabel[program.image.status]}</figcaption></figure>
+            <figure class="program-bento-media"><img alt={program.image.alt} loading="lazy" src={program.image.src} /></figure>
           ) : (
             <div aria-hidden="true" class="program-bento-pattern"><i></i><i></i><i></i></div>
           )}
@@ -84,15 +82,15 @@ const mapEmbedUrl = center.address
 </section>
 
 <section class="section day-section" id="daily">
-  <div class="container"><div class="day-head"><div><div class="eyebrow">A DAY WITH DA&amp;YOU</div><h2 class="section-title">좋은 하루는,<br />작은 순간에서 시작됩니다.</h2></div><p class="section-copy">함께 인사하고, 식사하고, 움직이고, 쉬는 하루. 다앤유가 지향하는 데이케어의 모습입니다.</p></div><div class="day-line">{dailyMoments.map((moment) => <div class="day-item"><small>{moment.index} / {moment.label}</small><strong>{moment.title.split('\n').map((line, index) => <>{index > 0 && <br />}{line}</>)}</strong><p>{moment.description}</p></div>)}</div></div>
+  <div class="container"><div class="day-head"><div><div class="eyebrow">A DAY WITH DA&amp;YOU</div><h2 class="section-title">어르신의 속도에 맞춘<br />편안한 하루입니다.</h2></div><p class="section-copy">반갑게 인사하고, 맛있게 식사하고, 즐겁게 움직이고, 편안히 쉬는 시간. 가족의 마음으로 하루를 함께합니다.</p></div><div class="day-line">{dailyMoments.map((moment) => <div class="day-item"><small>{moment.index} / {moment.label}</small><strong>{moment.title.split('\n').map((line, index) => <>{index > 0 && <br />}{line}</>)}</strong><p>{moment.description}</p></div>)}</div></div>
 </section>
 
 <section aria-labelledby="guide-heading" class="section guide-section" id="guide">
   <div class="container guide-grid">
-    <div class="guide-intro"><div class="eyebrow">VISITING DA&amp;YOU</div><h2 class="section-title" id="guide-heading">방문 전 필요한 정보는<br />간단하고 분명하게.</h2><p class="section-copy">센터 방문과 이용을 준비할 때 필요한 기본 정보를 한곳에 모았습니다. 자세한 이용 가능 여부는 전화로 안내받을 수 있습니다.</p></div>
+    <div class="guide-intro"><div class="eyebrow">VISITING DA&amp;YOU</div><h2 class="section-title" id="guide-heading">처음이라도 괜찮습니다.<br />차근차근 안내해 드릴게요.</h2><p class="section-copy">장기요양등급이나 이용 절차를 잘 모르셔도 괜찮습니다. 부모님의 현재 상황을 말씀해 주시면 필요한 내용을 쉽게 설명해 드립니다.</p></div>
     <div aria-label="센터 이용에 필요한 정보" class="guide-panel">
       <div class="guide-row"><div class="guide-label">센터 위치</div><div class="guide-value"><strong>{center.address || '위치 안내 준비 중'}</strong><span>{center.address ? '아래 길찾기 버튼으로 위치를 확인하세요.' : '위치 확정 후 길찾기 바로가기가 제공됩니다.'}</span></div></div>
-      <div class="guide-row"><div class="guide-label">운영 안내</div><div class="guide-value"><strong>{center.hours || '운영 정보 안내 준비 중'}</strong><span>이용 시간과 대상 등 기본 이용 정보를 안내합니다.</span></div></div>
+      <div class="guide-row"><div class="guide-label">운영 안내</div><div class="guide-value"><strong>{center.hours || '운영 정보 안내 준비 중'}</strong><span>부모님께 맞는 이용 시간과 절차를 친절히 안내해 드립니다.</span></div></div>
       <div class="guide-row"><div class="guide-label">송영 안내</div><div class="guide-value"><strong>{center.transportArea}</strong><span>거주지와 일정에 따른 송영 가능 여부 및 이용 조건은 전화로 확인해 주세요.</span></div></div>
       <div aria-label="센터 위치 및 길찾기" class="map-module">
         <div aria-live="polite" class="map-visual">
@@ -113,4 +111,4 @@ const mapEmbedUrl = center.address
   </div>
 </section>
 
-<section class="contact-section" id="contact"><div class="container contact-inner"><div><div class="eyebrow">LET'S TALK</div><h2 class="contact-title">우리 부모님께 맞는 하루인지,<br />먼저 이야기해 보세요.</h2><p class="contact-copy">이용 가능 여부와 프로그램이 궁금하다면 편하게 문의해 주세요.</p></div><div class="contact-actions"><PhoneLink class="btn btn-light" label="이용 상담하기" withIcon><span aria-hidden="true">↗</span></PhoneLink>{contact.isProvisional && <small class="provisional-contact">현재 연결: 기존 다앤유 방문재활 대표번호 {contact.displayPhone}</small>}</div></div></section>
+<section class="contact-section" id="contact"><div class="container contact-inner"><div><div class="eyebrow">LET'S TALK</div><h2 class="contact-title">부모님께 잘 맞는 곳인지,<br />부담 없이 먼저 물어보세요.</h2><p class="contact-copy">현재 불편한 점과 필요한 돌봄을 듣고, 이용 방법을 친절하게 안내해 드립니다.</p></div><div class="contact-actions"><PhoneLink class="btn btn-light" label="이용 상담하기" withIcon><span aria-hidden="true">↗</span></PhoneLink>{contact.isProvisional && <small class="provisional-contact">현재 연결: 기존 다앤유 방문재활 대표번호 {contact.displayPhone}</small>}</div></div></section>

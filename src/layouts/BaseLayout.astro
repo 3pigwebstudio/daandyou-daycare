@@ -6,7 +6,7 @@ interface Props {
   title?: string;
 }
 
-const { title = `${center.name} | 재활 전문성을 일상의 돌봄으로` } = Astro.props;
+const { title = `${center.name} | 부모님의 편안한 하루를 함께합니다` } = Astro.props;
 const canonicalUrl = new URL(Astro.url.pathname, center.publicUrl).toString();
 const socialImageUrl = new URL(media.hero.src, center.publicUrl).toString();
 const structuredData = {
