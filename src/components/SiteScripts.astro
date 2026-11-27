@@ -40,6 +40,68 @@
       targets.forEach((target) => observer.observe(target));
     }
 
+    const gallery = document.getElementById('program-gallery');
+    if (gallery instanceof HTMLDialogElement) {
+      const panels = Array.from(gallery.querySelectorAll('[data-gallery-panel]'));
+      let activePanel = null;
+      let activePhoto = 0;
+
+      const renderGalleryPhoto = (requestedIndex) => {
+        if (!(activePanel instanceof HTMLElement)) return;
+        const thumbs = Array.from(activePanel.querySelectorAll('[data-gallery-thumb]'));
+        if (!thumbs.length) return;
+        activePhoto = (requestedIndex + thumbs.length) % thumbs.length;
+        const selected = thumbs[activePhoto];
+        const image = activePanel.querySelector('[data-gallery-image]');
+        const caption = activePanel.querySelector('[data-gallery-caption]');
+        const current = activePanel.querySelector('[data-gallery-current]');
+        if (image instanceof HTMLImageElement && selected instanceof HTMLElement) {
+          image.src = selected.dataset.gallerySrc || '';
+          image.alt = selected.dataset.galleryAlt || '';
+        }
+        if (caption) caption.textContent = selected instanceof HTMLElement ? selected.dataset.galleryCaption || '' : '';
+        if (current) current.textContent = String(activePhoto + 1).padStart(2, '0');
+        thumbs.forEach((thumb, index) => {
+          thumb.classList.toggle('is-active', index === activePhoto);
+          thumb.setAttribute('aria-pressed', index === activePhoto ? 'true' : 'false');
+        });
+        selected?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      };
+
+      const openGallery = (programIndex) => {
+        activePanel = panels.find((panel) => panel instanceof HTMLElement && Number(panel.dataset.galleryPanel) === programIndex) || panels[0] || null;
+        panels.forEach((panel) => { panel.hidden = panel !== activePanel; });
+        renderGalleryPhoto(0);
+        document.documentElement.classList.add('gallery-open');
+        gallery.showModal();
+        gallery.querySelector('[data-gallery-close]')?.focus();
+        window.dispatchEvent(new CustomEvent('dnucare:conversion', { detail: { event: 'program_gallery_open', event_label: activePanel instanceof HTMLElement ? activePanel.querySelector('h2')?.textContent?.trim() || '' : '' } }));
+      };
+
+      document.querySelectorAll('[data-gallery-program]').forEach((card) => {
+        const activate = () => openGallery(Number(card.dataset.galleryProgram || 0));
+        card.addEventListener('click', activate);
+        card.addEventListener('keydown', (event) => {
+          if (event.key !== 'Enter' && event.key !== ' ') return;
+          event.preventDefault();
+          activate();
+        });
+      });
+      gallery.querySelector('[data-gallery-close]')?.addEventListener('click', () => gallery.close());
+      gallery.addEventListener('click', (event) => { if (event.target === gallery) gallery.close(); });
+      gallery.addEventListener('close', () => document.documentElement.classList.remove('gallery-open'));
+      gallery.addEventListener('click', (event) => {
+        const thumb = event.target instanceof Element ? event.target.closest('[data-gallery-thumb]') : null;
+        if (thumb instanceof HTMLElement) renderGalleryPhoto(Number(thumb.dataset.galleryThumb || 0));
+        if (event.target instanceof Element && event.target.closest('[data-gallery-prev]')) renderGalleryPhoto(activePhoto - 1);
+        if (event.target instanceof Element && event.target.closest('[data-gallery-next]')) renderGalleryPhoto(activePhoto + 1);
+      });
+      gallery.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowLeft') { event.preventDefault(); renderGalleryPhoto(activePhoto - 1); }
+        if (event.key === 'ArrowRight') { event.preventDefault(); renderGalleryPhoto(activePhoto + 1); }
+      });
+    }
+
     const app = document.getElementById('xi-mobile-app');
     if (!app) return;
     const views = Array.from(app.querySelectorAll('[data-view]'));

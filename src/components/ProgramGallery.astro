@@ -1,0 +1,50 @@
+---
+import { programs } from '../data/site';
+---
+
+<dialog aria-label="프로그램 사진 갤러리" class="program-gallery-dialog" id="program-gallery">
+  <div class="program-gallery-shell">
+    <button aria-label="갤러리 닫기" class="program-gallery-close" data-gallery-close type="button">
+      <span aria-hidden="true">×</span>
+    </button>
+    {programs.map((program, programIndex) => (
+      <section class="program-gallery-panel" data-gallery-panel={programIndex} hidden={programIndex !== 0}>
+        <header class="program-gallery-head">
+          <div>
+            <span>{program.index} · {program.overline}</span>
+            <h2>{program.title}</h2>
+          </div>
+          <p><strong data-gallery-current>01</strong> / {String(program.gallery.length).padStart(2, '0')}</p>
+        </header>
+        <div class="program-gallery-stage">
+          <button aria-label="이전 사진" class="program-gallery-nav program-gallery-prev" data-gallery-prev type="button">
+            <span aria-hidden="true">‹</span>
+          </button>
+          <figure>
+            <img alt={program.gallery[0]!.alt} data-gallery-image src={program.gallery[0]!.src} />
+            <figcaption data-gallery-caption>{program.gallery[0]!.caption}</figcaption>
+          </figure>
+          <button aria-label="다음 사진" class="program-gallery-nav program-gallery-next" data-gallery-next type="button">
+            <span aria-hidden="true">›</span>
+          </button>
+        </div>
+        <div aria-label={`${program.title} 사진 목록`} class="program-gallery-thumbs">
+          {program.gallery.map((photo, photoIndex) => (
+            <button
+              aria-label={`${photoIndex + 1}번째 사진 보기: ${photo.caption}`}
+              aria-pressed={photoIndex === 0 ? 'true' : 'false'}
+              class={photoIndex === 0 ? 'is-active' : ''}
+              data-gallery-alt={photo.alt}
+              data-gallery-caption={photo.caption}
+              data-gallery-src={photo.src}
+              data-gallery-thumb={photoIndex}
+              type="button"
+            >
+              <img alt="" loading="lazy" src={photo.src} />
+            </button>
+          ))}
+        </div>
+      </section>
+    ))}
+  </div>
+</dialog>

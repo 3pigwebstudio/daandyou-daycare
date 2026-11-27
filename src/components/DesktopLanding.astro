@@ -68,13 +68,13 @@ const mapEmbedUrl = center.address
         <a class="inline-link" href="#guide">이용 안내 확인하기 <span aria-hidden="true">↗</span></a>
       </article>
       {programs.map((program, index) => (
-        <article aria-label={`${program.title} 프로그램`} class={`program-bento-card program-bento-card-${index + 1}`}>
+        <article aria-haspopup="dialog" aria-label={`${program.title} 프로그램 사진 ${program.gallery.length}장 보기`} class={`program-bento-card program-bento-card-${index + 1}`} data-gallery-program={index} role="button" tabindex="0">
           {program.image ? (
             <figure class="program-bento-media"><img alt={program.image.alt} loading="lazy" src={program.image.src} /></figure>
           ) : (
             <div aria-hidden="true" class="program-bento-pattern"><i></i><i></i><i></i></div>
           )}
-          <div class="program-bento-copy"><span class="program-no">{program.index} · {program.overline}</span><h3>{program.title}</h3><p>{program.description}</p><span class="program-tag">{program.topic}</span></div>
+          <div class="program-bento-copy"><span class="program-no">{program.index} · {program.overline}</span><h3>{program.title}</h3><p>{program.description}</p><div class="program-card-meta"><span class="program-tag">{program.topic}</span><span class="program-gallery-cue"><svg aria-hidden="true" fill="none" viewBox="0 0 24 24"><rect height="15" rx="2.5" stroke="currentColor" stroke-width="1.6" width="18" x="3" y="4.5"></rect><circle cx="9" cy="10" r="1.7" fill="currentColor"></circle><path d="m5.5 17 4.2-4 3 2.8 2.2-2.1 3.6 3.3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg>사진 {program.gallery.length}장 보기</span></div></div>
         </article>
       ))}
     </div>

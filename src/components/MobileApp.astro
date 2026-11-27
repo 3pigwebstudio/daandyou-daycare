@@ -36,13 +36,13 @@ const directionsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeU
     <div aria-label="프로그램 카드 슬라이더" class="xi-carousel-wrap">
       <div aria-label="프로그램 소개 카드. 좌우로 넘기거나 이전·다음 버튼을 누르세요." class="xi-card-track" id="xi-card-track" tabindex="0">
         {programs.map((program, index) => (
-          <article aria-label={`${index + 1}번째 프로그램: ${program.title}`} class="xi-program-card">
+          <article aria-haspopup="dialog" aria-label={`${index + 1}번째 프로그램: ${program.title}. 사진 ${program.gallery.length}장 보기`} class="xi-program-card" data-gallery-program={index} role="button" tabindex="0">
             {program.image ? (
               <div class="xi-program-photo"><img alt={program.image.alt} src={program.image.src} /></div>
             ) : (
               <div class="xi-program-photo xi-pattern"><div aria-hidden="true" class="xi-shape-grid"><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="xi-photo-note">활동 영역 개념 이미지</span></div>
             )}
-            <div class="xi-program-body"><small>{program.index} / {program.overline}</small><h3>{program.title}</h3><p>{program.description}</p><span class="xi-topic">{program.topic}</span></div>
+            <div class="xi-program-body"><small>{program.index} / {program.overline}</small><h3>{program.title}</h3><p>{program.description}</p><div class="xi-program-meta"><span class="xi-topic">{program.topic}</span><span class="program-gallery-cue"><svg aria-hidden="true" fill="none" viewBox="0 0 24 24"><rect height="15" rx="2.5" stroke="currentColor" stroke-width="1.6" width="18" x="3" y="4.5"></rect><circle cx="9" cy="10" r="1.7" fill="currentColor"></circle><path d="m5.5 17 4.2-4 3 2.8 2.2-2.1 3.6 3.3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"></path></svg>사진 {program.gallery.length}장 보기</span></div></div>
           </article>
         ))}
       </div>

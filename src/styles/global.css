@@ -287,6 +287,54 @@
 @media(max-width:430px){.xi-expertise-list{grid-template-columns:1fr}.xi-mobile-day>div{grid-template-columns:1fr}.xi-slider-arrows button{min-width:80px;padding:0 12px}}
 @media(prefers-reduced-motion:reduce){.program-bento-card{transition:none!important}}
 
+/* v2.8 — Program photo gallery and explicit card affordance. */
+.program-bento-card,.xi-program-card{cursor:pointer}
+.program-bento-card:focus-visible,.xi-program-card:focus-visible{outline:3px solid #247c94;outline-offset:4px}
+.program-card-meta,.xi-program-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;margin-top:17px}
+.program-card-meta .program-tag,.xi-program-meta .xi-topic{margin-top:0}
+.program-gallery-cue{display:inline-flex;align-items:center;gap:6px;color:#236c83;font-size:12px;font-weight:800;white-space:nowrap}
+.program-gallery-cue svg{width:18px;height:18px;flex:0 0 auto}
+.program-gallery-dialog{width:min(1180px,calc(100vw - 48px));max-width:none;max-height:calc(100dvh - 48px);margin:auto;padding:0;border:0;border-radius:26px;background:transparent;color:#17384a;box-shadow:0 30px 90px rgba(9,35,48,.28);overflow:hidden}
+.program-gallery-dialog::backdrop{background:rgba(8,27,38,.72)}
+.program-gallery-dialog[open]{display:block}
+.program-gallery-shell{position:relative;min-height:0;padding:28px;background:#fff}
+.program-gallery-close{position:absolute;z-index:4;right:22px;top:20px;width:48px;height:48px;border:1px solid #d7e1e5;border-radius:50%;background:#fff;color:#17384a;font-size:30px;line-height:1;display:grid;place-items:center;cursor:pointer;box-shadow:0 7px 18px rgba(21,58,74,.1)}
+.program-gallery-close:focus-visible,.program-gallery-nav:focus-visible,.program-gallery-thumbs button:focus-visible{outline:3px solid #247c94;outline-offset:3px}
+.program-gallery-panel[hidden]{display:none}
+.program-gallery-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;padding:0 64px 20px 4px}
+.program-gallery-head span{display:block;color:#337d93;font-size:11px;font-weight:800;letter-spacing:.11em}
+.program-gallery-head h2{margin:8px 0 0;font-size:clamp(30px,3vw,44px);line-height:1.15;letter-spacing:-.055em}
+.program-gallery-head p{margin:0;color:#71828a;font-size:14px;font-weight:700;white-space:nowrap}.program-gallery-head p strong{color:#1d6077;font-size:20px}
+.program-gallery-stage{display:grid;grid-template-columns:52px minmax(0,1fr) 52px;align-items:center;gap:16px}
+.program-gallery-stage figure{position:relative;margin:0;height:min(60vh,620px);min-height:420px;border-radius:18px;overflow:hidden;background:#eaf0f2}
+.program-gallery-stage img{display:block;width:100%;height:100%;object-fit:contain}
+.program-gallery-stage figcaption{position:absolute;left:16px;bottom:14px;max-width:calc(100% - 32px);padding:9px 12px;border-radius:10px;background:rgba(17,47,60,.86);color:#fff;font-size:14px;line-height:1.45}
+.program-gallery-nav{width:52px;height:52px;border:1px solid #d5e1e5;border-radius:50%;background:#fff;color:#1c6078;display:grid;place-items:center;cursor:pointer;font-size:36px;line-height:1;transition:background .2s ease,color .2s ease,transform .2s ease}
+.program-gallery-nav:hover{background:#1f6e88;color:#fff;transform:scale(1.04)}
+.program-gallery-thumbs{display:flex;justify-content:center;gap:10px;margin:18px 68px 0;overflow-x:auto;padding:3px 3px 5px;scrollbar-width:thin}
+.program-gallery-thumbs button{width:116px;height:74px;flex:0 0 auto;padding:3px;border:2px solid transparent;border-radius:12px;background:#fff;cursor:pointer;opacity:.68;transition:opacity .2s ease,border-color .2s ease}
+.program-gallery-thumbs button.is-active{border-color:#247c94;opacity:1}.program-gallery-thumbs img{display:block;width:100%;height:100%;border-radius:8px;object-fit:cover}
+html.gallery-open{overflow:hidden}
+@media(max-width:850px){
+ .xi-program-meta{align-items:flex-end}.xi-program-meta .program-gallery-cue{font-size:13px}
+ .program-gallery-dialog{width:100vw;height:100dvh;max-height:none;margin:0;border-radius:0}
+ .program-gallery-shell{height:100%;padding:20px 16px 18px;display:flex;flex-direction:column;overflow:auto}
+ .program-gallery-close{position:fixed;right:16px;top:16px;width:48px;height:48px}
+ .program-gallery-head{padding:4px 58px 18px 2px;align-items:flex-end}.program-gallery-head h2{font-size:31px}.program-gallery-head p{font-size:13px}.program-gallery-head p strong{font-size:18px}
+ .program-gallery-stage{grid-template-columns:42px minmax(0,1fr) 42px;gap:7px;flex:1;min-height:0}
+ .program-gallery-stage figure{height:min(58vh,560px);min-height:300px;border-radius:14px}
+ .program-gallery-stage figcaption{left:10px;bottom:10px;max-width:calc(100% - 20px);font-size:13px;padding:8px 10px}
+ .program-gallery-nav{width:42px;height:42px;font-size:31px}
+ .program-gallery-thumbs{justify-content:flex-start;margin:14px 0 0;gap:8px}.program-gallery-thumbs button{width:92px;height:66px}
+}
+@media(max-width:430px){
+ .program-card-meta,.xi-program-meta{align-items:flex-start;flex-direction:column;gap:12px}.xi-program-meta{flex-direction:row;align-items:center}
+ .program-gallery-cue{font-size:12px}
+ .program-gallery-head{display:block}.program-gallery-head p{margin-top:8px}
+ .program-gallery-stage{grid-template-columns:36px minmax(0,1fr) 36px;gap:5px}.program-gallery-nav{width:36px;height:44px;border-radius:12px}
+ .program-gallery-stage figure{height:min(54vh,490px);min-height:280px}
+}
+
 /* v1.9 — Soft Clinical Glass and clearer mobile card affordance. */
 @media(max-width:600px){
  .mobile-call{left:10px;right:10px;bottom:max(8px,env(safe-area-inset-bottom));padding:8px;border:1px solid rgba(255,255,255,.8);border-radius:22px;background:rgba(255,255,255,.76);box-shadow:0 15px 40px rgba(25,50,73,.16),inset 0 1px 0 rgba(255,255,255,.82);backdrop-filter:blur(18px) saturate(125%);-webkit-backdrop-filter:blur(18px) saturate(125%)}

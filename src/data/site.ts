@@ -5,6 +5,7 @@ export interface Program {
   description: string;
   topic: string;
   image?: MediaAsset;
+  gallery: MediaAsset[];
 }
 
 export type MediaStatus = 'concept' | 'provided' | 'final';
@@ -13,6 +14,7 @@ export interface MediaAsset {
   src: string;
   alt: string;
   status: MediaStatus;
+  caption?: string;
 }
 
 export interface FaqItem {
@@ -133,6 +135,12 @@ export const programs: Program[] = [
     description: '식사 자세와 삼킴의 어려움을 세심하게 살펴, 매일의 식사 시간이 더 편안하고 안전하도록 돕습니다.',
     topic: '식사 · 삼킴 · 일상',
     image: media.mealSupport,
+    gallery: [
+      { ...media.mealSupport, caption: '편안한 식사 참여를 돕는 모습' },
+      { src: '/images/gallery/meal-guidance.jpg', alt: '강서다앤유재활 데이케어센터에서 직원이 어르신의 식사 상태를 살피는 모습', status: 'final', caption: '식사 상태를 곁에서 세심하게 확인합니다.' },
+      { src: '/images/gallery/oral-support.jpg', alt: '강서다앤유재활 데이케어센터에서 직원이 어르신의 구강 움직임을 살피는 모습', status: 'final', caption: '식사와 삼킴에 필요한 구강 움직임을 살핍니다.' },
+      { src: '/images/gallery/meal-assistance.jpg', alt: '강서다앤유재활 데이케어센터에서 직원이 어르신의 식사를 돕는 모습', status: 'final', caption: '어르신의 속도에 맞춰 식사를 돕습니다.' },
+    ],
   },
   {
     index: '02',
@@ -141,6 +149,12 @@ export const programs: Program[] = [
     description: '파킨슨병 등 노인성 질병의 움직임 특성을 고려해, 걷기와 움직임을 어르신의 일상에 맞게 돕습니다.',
     topic: '재활운동 · 신체활동 · 이동',
     image: media.movement,
+    gallery: [
+      { ...media.movement, caption: '지원 인력과 함께하는 보행·균형 활동' },
+      { src: '/images/gallery/walking-practice.jpg', alt: '강서다앤유재활 데이케어센터에서 어르신이 보행선을 따라 걷는 모습', status: 'final', caption: '안전하게 보행선을 따라 걷습니다.' },
+      { src: '/images/gallery/balance-course.jpg', alt: '강서다앤유재활 데이케어센터에서 어르신이 장애물 넘기 활동에 참여하는 모습', status: 'final', caption: '직원의 도움과 함께 균형 활동에 참여합니다.' },
+      { src: '/images/gallery/step-balance.jpg', alt: '강서다앤유재활 데이케어센터에서 어르신이 발판 위 균형 활동에 참여하는 모습', status: 'final', caption: '몸 상태에 맞춰 발판 위 움직임을 연습합니다.' },
+    ],
   },
   {
     index: '03',
@@ -149,6 +163,12 @@ export const programs: Program[] = [
     description: '즐겁게 참여하는 인지·신체 활동으로 익숙한 일상과 자신감을 이어가실 수 있도록 돕습니다.',
     topic: '인지 · 신체 · 참여',
     image: media.cognition,
+    gallery: [
+      { ...media.cognition, caption: '태블릿을 활용한 인지활동' },
+      { src: '/images/gallery/group-ball-activity.jpg', alt: '강서다앤유재활 데이케어센터에서 어르신들이 공 활동에 참여하는 모습', status: 'final', caption: '함께 주고받으며 즐겁게 참여합니다.' },
+      { src: '/images/gallery/ring-activity.jpg', alt: '강서다앤유재활 데이케어센터에서 어르신들이 링을 활용한 활동에 참여하는 모습', status: 'final', caption: '도구를 활용해 몸과 마음을 함께 움직입니다.' },
+      { src: '/images/gallery/seated-stretching.jpg', alt: '강서다앤유재활 데이케어센터에서 어르신들이 앉아서 신체활동에 참여하는 모습', status: 'final', caption: '안정된 자세에서 편안하게 활동합니다.' },
+    ],
   },
   {
     index: '04',
@@ -157,6 +177,12 @@ export const programs: Program[] = [
     description: '건강과 마음을 살피고 식사와 등원·귀가 차량 지원까지 챙기며, 센터에서 보내는 하루를 따뜻하게 함께합니다.',
     topic: '일상생활 · 건강 · 정서',
     image: media.daycareLife,
+    gallery: [
+      { ...media.daycareLife, caption: '함께 웃으며 참여하는 소그룹 활동' },
+      { src: '/images/gallery/relaxation-chair.jpg', alt: '강서다앤유재활 데이케어센터에서 어르신이 편안하게 휴식하는 모습', status: 'final', caption: '활동 사이 편안한 휴식 시간을 가집니다.' },
+      { src: '/images/gallery/rest-care.jpg', alt: '강서다앤유재활 데이케어센터에서 직원이 어르신의 휴식을 돕는 모습', status: 'final', caption: '건강 상태를 살피며 휴식을 돕습니다.' },
+      { src: '/images/gallery/warm-welcome.jpg', alt: '강서다앤유재활 데이케어센터에서 직원이 어르신들을 반갑게 맞이하는 모습', status: 'final', caption: '따뜻한 인사로 센터의 하루를 시작합니다.' },
+    ],
   },
 ];
 
